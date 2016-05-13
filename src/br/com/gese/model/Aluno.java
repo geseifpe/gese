@@ -121,7 +121,6 @@ public class Aluno {
 	}
 	
 	
-	
 	public String getLinklattes() {
 		return linklattes;
 	}
@@ -135,6 +134,16 @@ public class Aluno {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+	
+	public String getSexoCompleto(){
+		if(this.sexo == 'm'){
+			return "Masculino";
+		}else{
+			return "Feminino";
+		}
+	}
+	
+	
 	
 	
 }

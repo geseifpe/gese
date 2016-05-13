@@ -59,16 +59,16 @@
 			<div class="row">
 				<div class="col-md-3 text-left">
 					<!-- Menu Principal -->
-					<form method="post">
+					
 						<input class="btn btn-default mesmo-tamanho" type="submit"
 							name="opcao" value="Perfil" /> <input
 							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
 							value="Menssagens" /> <input
 							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-							value="Relatório Mensal" /> <input
+							value="Relatório Mensal" /> <a href="logout"><input 
 							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-							value="Sair" />
-					</form>
+							value="Sair" /></a>
+					
 				</div>
 				<%
 					String opcao = request.getParameter("opcao");

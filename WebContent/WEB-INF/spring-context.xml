@@ -25,4 +25,9 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<!-- CODIGO PARA CARREGAR CSS E OUTRAS COISAS NO PROJETO -->
 	<mvc:default-servlet-handler/>
 	
+	<!--  Código para ler a classe autorizador -->
+	<mvc:interceptors>
+		<bean class="br.com.gese.util.AutorizadorInterceptor" />
+	</mvc:interceptors>
+	
 </beans>

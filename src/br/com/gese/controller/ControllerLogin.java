@@ -1,6 +1,6 @@
 package br.com.gese.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +47,7 @@ public class ControllerLogin {
 	}
 
 	@RequestMapping("/loginAluno")
-	public String LoginAluno(Model model, Usuario usuario) {
+	public String LoginAluno(Model model, HttpSession session,Usuario usuario) {
 
         AlunoDao daoAluno= new AlunoDao();
 		UsuarioDao daoUsuario = new UsuarioDao();
@@ -58,9 +58,17 @@ public class ControllerLogin {
 			return "telaInicial";
 		}else{
 			Aluno aluno = daoAluno.getAlunoId(usuarioLogado.getCpf());
+			session.setAttribute("usuarioLogado", usuarioLogado); 
+			session.setAttribute("alunoLogado", aluno); 
 			model.addAttribute("aluno", aluno);
 			return "telaAluno/aluno";
 		}
 
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "forward:/";
 	}
 }

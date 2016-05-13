@@ -24,7 +24,7 @@
 								</tr>
 								<tr>
 									<td>Genero:</td>
-									<td>${aluno.sexo}</td>
+									<td>${aluno.sexoCompleto}</td>
 								</tr>
 								<tr>
 									<td>Endereço:</td>
@@ -37,7 +37,7 @@
 								</tr>
 								<tr>
 									<td>Contato:</td>
-									<td>${aluno.telefone}(Fixo) <br /> <br /> ${aluno.celular}(Móvel)
+									<td>${aluno.telefone} (Fixo) <br /> <br /> ${aluno.celular} (Móvel)
 									</td>
 								</tr>
 							</tbody>
