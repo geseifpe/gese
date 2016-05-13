@@ -123,7 +123,7 @@
 
 								<ul class="dropdown-menu">
 									<li><a href="cadastroAlunoTela">Aluno</a></li>
-									<li><a href="cadastroPesquisador">Pesquisador</a></li>
+									<li><a href="cadastroPesquisadorTela">Pesquisador</a></li>
 								</ul>
 
 							</div>

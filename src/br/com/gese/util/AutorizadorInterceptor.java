@@ -15,7 +15,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		boolean acesso = false;
 		String uri = request.getRequestURI();
 		if (uri.contains("/resources/bootstrap") || uri.contains("/resources/css") || uri.contains("/resources/img")
-				|| uri.contains("/resources/js") || uri.endsWith("/Projeto_Final/") || uri.endsWith("logout")
+				|| uri.contains("/resources/js") || uri.endsWith("/cadastroPesquisadorTela") || uri.endsWith("logout")
 				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/telainicial") || uri.endsWith("/")) {
 			
 				 acesso = true;
@@ -27,7 +27,8 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 				acesso = true;
 			}else{
 				if (!acesso && request.getSession().getAttribute("usuarioLogado") == null && (uri.endsWith("loginAluno") ) ) {
-					acesso = true;
+					response.sendRedirect("/Projeto_Pibiti_2016/");
+					
 				}
 			}
 		}

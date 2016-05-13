@@ -21,10 +21,10 @@ import br.com.gese.util.Mensagem;
 
 
 @Controller
-public class ControllerAluno {
+public class ControllerPesquisador {
 	
-	@RequestMapping("/cadastroAlunoTela")
-	public String CadastrarAluno(Model model) {
+	@RequestMapping("/cadastroPesquisadorTela")
+	public String cadastroPesquisadorTela(Model model) {
 		CampusDao dao = new CampusDao();
 		List<Campus> listaCampus = dao.getCampus();
 		
@@ -33,11 +33,11 @@ public class ControllerAluno {
 		//List<Campus> listaCampus = dao.getCampusId(8);
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
-	    return "telaCadastro/cadastroAluno";
+	    return "telaCadastro/cadastroPesquisador";
 	}
 	
-	@RequestMapping("/inserirAluno")
-	public String inserirAluno(Model model, Aluno aluno, Usuario usuario) {
+	@RequestMapping("/inserirPesquisador")
+	public String inserirPesquisador(Model model, Aluno aluno, Usuario usuario) {
 		AlunoDao dao = new AlunoDao();
 		UsuarioDao daoUsuario = new UsuarioDao();
 		dao.insertAluno(aluno);
@@ -51,6 +51,10 @@ public class ControllerAluno {
 	}
 	
 	
-	
+	@RequestMapping("/cadastroPesquisador")
+	public String CadastrarPesquisador() {
+					
+	    return "telaCadastro/cadastroPesquisador";
+	}
 }
 
