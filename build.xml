@@ -1,4 +1,4 @@
-   <project name="teste" basedir="." default="dir">
+   <project name="teste" basedir="." default="executar">
 
     <property name="classes" location="classes"/>
 
@@ -6,7 +6,7 @@
         <mkdir dir="classes" />
     </target>
 
- <target name="limpar">
+    <target name="limpar">
         <delete dir="classes"/>
     </target>
 
@@ -16,7 +16,19 @@
         destdir="${classes}" />
     </target>
 
-   
+    <target name="empacotar" depends="compilar">
+        <mkdir dir="build/jar"/>
+        <jar destfile="build/jar/Empresa.jar" 
+            basedir="${basedir}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="Empresa"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="executar" depends="empacotar, limpar">
+        <java jar="build/jar/Empresa.jar" fork="true"/>
+    </target>
 
 
 </project>
