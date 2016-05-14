@@ -17,7 +17,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		if (uri.contains("/resources/bootstrap") || uri.contains("/resources/css") || uri.contains("/resources/img")
 				|| uri.contains("/resources/js") || uri.endsWith("/cadastroPesquisadorTela") || uri.endsWith("logout")
 				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/telainicial") || uri.endsWith("loginAluno")|| uri.endsWith("/")
-				|| uri.endsWith("/cadastroAlunoTela")) {
+				|| uri.endsWith("/cadastroAlunoTela")|| uri.endsWith("/inserirAluno")|| uri.endsWith("/inserirPesquisador")   ) {
 			
 				 acesso = true;
 			
