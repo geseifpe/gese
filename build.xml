@@ -17,8 +17,8 @@
 			<fileset dir="WebContent"/>
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
-			<copy file="dist/AntExample.war" todir="/var/lib/tomcat8/"/>
 		</war>
+		<copy file="dist/AntExample.war" todir="/var/lib/tomcat8/"/>
 	</target>
 
 </project>
