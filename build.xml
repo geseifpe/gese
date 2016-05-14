@@ -1,36 +1,15 @@
-   <project name="teste" basedir="." default="executar">
+<target name="build-war">
 
-    <property name="classes" location="classes"/>
-
-    <target name="dir">
-        <mkdir dir="classes" />
-    </target>
-
-    <target name="limpar">
-        <delete dir="classes"/>
-    </target>
-
-    <target name="compilar" depends="dir"> 
-        <javac srcdir="${basedir}"
-        classpath="${classes}"
-        destdir="${classes}" />
-    </target>
-
-    <target name="empacotar" depends="compilar">
-        <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/Empresa.jar" 
-            basedir="${basedir}/classes">
-            <manifest>
-                <attribute name="Main-Class" value="Empresa"/>
-            </manifest>
-        </jar>
-    </target>
-
-    <target name="executar" depends="empacotar, limpar">
-        <java jar="build/jar/Empresa.jar" fork="true"/>
-    </target>
-
-
-</project>
+   <war destfile="fax.war" webxml="${web.dir}/web.xml">
+      <fileset dir="${web.dir}/WebContent">
+         <include name="**/*.*"/>
+      </fileset>
+      
+      <lib dir="thirdpartyjars">
+         <exclude name="portlet.jar"/>
+      </lib>
+      
+      <classes dir="${build.dir}/web"/>
+   </war>
    
-   
+</target>
