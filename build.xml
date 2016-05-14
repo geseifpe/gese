@@ -6,6 +6,17 @@
         <mkdir dir="classes" />
     </target>
 
+ <target name="limpar">
+        <delete dir="classes"/>
+    </target>
+
+    <target name="compilar" depends="dir"> 
+        <javac srcdir="${basedir}"
+        classpath="${classes}"
+        destdir="${classes}" />
+    </target>
+
+   
 
 
 </project>
