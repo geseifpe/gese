@@ -48,24 +48,28 @@ public class ControllerLogin {
 
 	@RequestMapping("/loginAluno")
 	public String LoginAluno(Model model, HttpSession session,Usuario usuario) {
-
-        AlunoDao daoAluno= new AlunoDao();
-		UsuarioDao daoUsuario = new UsuarioDao();
-		Usuario usuarioLogado = daoUsuario.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
-		if(usuarioLogado == null){
-			model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
-			model.addAttribute("display", "");
-			return "telaInicial";
-		}else{
-			Aluno aluno = daoAluno.getAlunoId(usuarioLogado.getCpf());
-			session.setAttribute("usuarioLogado", usuarioLogado); 
-			session.setAttribute("alunoLogado", aluno); 
-			model.addAttribute("aluno", aluno);
-			return "telaAluno/aluno";
+		String uri = null;
+		try {
+			AlunoDao daoAluno= new AlunoDao();
+			UsuarioDao daoUsuario = new UsuarioDao();
+			Usuario usuarioLogado = daoUsuario.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
+			if(usuarioLogado == null){
+				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
+				model.addAttribute("display", "");
+				uri = "telaInicial";
+			}else{
+				Aluno aluno = daoAluno.getAlunoId(usuarioLogado.getCpf());
+				session.setAttribute("usuarioLogado", usuarioLogado); 
+				session.setAttribute("alunoLogado", aluno); 
+				model.addAttribute("aluno", aluno);
+				uri = "telaAluno/aluno";
+			}
+		} catch (Exception e) {
+			return "forward:/";
 		}
-
+		return uri;
 	}
-	
+
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

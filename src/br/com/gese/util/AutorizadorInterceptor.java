@@ -16,7 +16,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		String uri = request.getRequestURI();
 		if (uri.contains("/resources/bootstrap") || uri.contains("/resources/css") || uri.contains("/resources/img")
 				|| uri.contains("/resources/js") || uri.endsWith("/cadastroPesquisadorTela") || uri.endsWith("logout")
-				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/telainicial") || uri.endsWith("/")) {
+				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/telainicial") || uri.endsWith("loginAluno")|| uri.endsWith("/")) {
 			
 				 acesso = true;
 			
