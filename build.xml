@@ -1,4 +1,4 @@
-<project name="teste" basedir="." default="executar">
+   <project name="teste" basedir="." default="dir">
 
     <property name="classes" location="classes"/>
 
@@ -9,3 +9,5 @@
 
 
 </project>
+   
+   
