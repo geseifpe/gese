@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="MyTask" basedir="." >
+<project name="MyTask" basedir="." default="war">
 
-    <target name="compile" description="Compiles the Task">
-        <javac srcdir="src" destdir="classes"/>
-    </target>
-
-    <target name="war" description="JARs the Task">
-        <jar destfile="projeto.war" basedir="classes"/>
-    </target>
+   <target name="init">
+		<mkdir dir="build/classes"/>
+		<mkdir dir="dist" />
+	</target>
+	
+	<target name="compile" depends="init" >
+		<javac destdir="build/classes" debug="true" srcdir="src">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war destfile="dist/AntExample.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent"/>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+		</war>
+	</target>
 
 </project>
