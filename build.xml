@@ -18,7 +18,7 @@
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
 		</war>
-		<copy file="dist/Projeto.war" todir="/opt/tomcat/webapps"/>
+		<copy file="dist/Projeto_Pibit_2016.war" todir="/opt/tomcat/webapps"/>
 	</target>
 
 </project>
