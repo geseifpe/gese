@@ -7,7 +7,7 @@ public class TesteLogin {
 
 	@Test
 	public void testar(){
-		Assert.assertEquals(1,1);
+		Assert.assertEquals(2,2);
 	}
 	
 	
