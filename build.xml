@@ -3,7 +3,7 @@
  <target name="deploy">
 
    <war destfile="fax.war" webxml="${web.dir}/web.xml">
-      <fileset dir="${web.dir}/WebContent">
+      <fileset dir="WebContent/WEB-INF/WebContent">
          <include name="**/*.*"/>
       </fileset>
       
