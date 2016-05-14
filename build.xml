@@ -1,4 +1,6 @@
-<target name="build-war">
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="deploy" name="IFPE">
+ <target name="deploy">
 
    <war destfile="fax.war" webxml="${web.dir}/web.xml">
       <fileset dir="${web.dir}/WebContent">
@@ -13,3 +15,4 @@
    </war>
    
 </target>
+</project>
