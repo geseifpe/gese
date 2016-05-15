@@ -23,17 +23,9 @@
 		
 		<junit printsummary="yes" haltonfailure="no">
 
-			<!-- Project classpath, must include junit.jar -->
-			<classpath refid="test.path" />
-				
-			<!-- test class -->
-			<classpath location="${test.classes.dir}" />
-				
-			<test name="br.com.gese.testes.TesteLogin" 
-				haltonfailure="no" todir="${report.dir}">
-				<formatter type="plain" />
-				<formatter type="xml" />
-			</test>
+			 <junit haltonfailure="true" printsummary="true">
+			      <test name="br.com.gese.testes.TesteLogin"/>
+			 </junit>
 				
 		  </junit>
 		
