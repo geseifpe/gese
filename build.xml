@@ -19,6 +19,27 @@
 			<classes dir="build/classes"/>
 		</war>
 		<copy file="dist/Projeto_Pibit_2016.war" todir="/opt/tomcat/webapps"/>
+		
+		
+		<junit printsummary="yes" haltonfailure="no">
+
+			<!-- Project classpath, must include junit.jar -->
+			<classpath refid="test.path" />
+				
+			<!-- test class -->
+			<classpath location="${test.classes.dir}" />
+				
+			<test name="br.com.gese.testes.TesteLogin" 
+				haltonfailure="no" todir="${report.dir}">
+				<formatter type="plain" />
+				<formatter type="xml" />
+			</test>
+				
+		  </junit>
+		
+		
+		
+		
 	</target>
 
 </project>
