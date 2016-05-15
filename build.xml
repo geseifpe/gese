@@ -19,16 +19,7 @@
 			<classes dir="build/classes"/>
 		</war>
 		<copy file="dist/Projeto_Pibit_2016.war" todir="/opt/tomcat/webapps"/>
-		
-		
-		<junit printsummary="yes" haltonfailure="no">
-
-			 <junit haltonfailure="true" printsummary="true">
-			      <test name="br.com.gese.testes.TesteLogin"/>
-			 </junit>
-				
-		  </junit>
-		
+	
 		
 		
 		
