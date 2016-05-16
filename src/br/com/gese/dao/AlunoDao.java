@@ -1,7 +1,6 @@
 package br.com.gese.dao;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import com.google.gson.Gson;

@@ -31,8 +31,8 @@
 									<td>${aluno.sexoCompleto}</td>
 								</tr>
 								<tr>
-									<td>Endereço:</td>
-									<td>Metro Manila,Philippines</td>
+									<td>Lattes:</td>
+									<td>${aluno.linklattes}</td>
 								</tr>
 								<tr>
 									<td>Email:</td>
