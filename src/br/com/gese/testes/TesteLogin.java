@@ -12,7 +12,7 @@ public class TesteLogin extends TestCase {
 	}
 	
 	public void testar1(){
-		Assert.assertEquals(2,2);
+		Assert.assertEquals(1,2);
 	}
 	
 }

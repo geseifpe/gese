@@ -4,7 +4,7 @@
    <target name="init">
 		<mkdir dir="build/classes"/>
 		<mkdir dir="dist" />
-   	<mkdir dir="./reports" />
+   	
    	
 	</target>
 	
@@ -34,20 +34,27 @@
 			            <pathelement location="WebContent/WEB-INF/lib" />
 			        </classpath>
 			<test name="br.com.gese.testes.TesteLogin" haltonfailure="no" outfile="result">
-			    <formatter type="xml"/>
+			
+			   <formatter type="plain" usefile="false"/>
+				<formatter type="xml"/>
 			  </test>
 			
 		</junit>
-		<junitreport todir="./reports">
-		  <fileset dir="./reports">
-		    <include name="TEST-*.xml"/>
-		  </fileset>
-		  <report format="frames" todir="./reports/html"/>
-		</junitreport>
+		<mkdir dir="./reports" />
+		<junitreport todir="reports">
+			
+		    <fileset dir="reports">
+		        <include name="TEST-*.xml"/>
+		    </fileset>
+		    <report todir="reports/html"
+		        
+		        format="frames">
 
-		<fail message="test failed" if="test.failure" />
-	
+		    </report>
+		</junitreport>
+		
 	</target>
+	
 
 </project>
 
