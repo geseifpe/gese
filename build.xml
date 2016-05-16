@@ -38,7 +38,12 @@
 			  </test>
 			
 		</junit>
-		
+		<junitreport todir="./reports">
+		  <fileset dir="./reports">
+		    <include name="TEST-*.xml"/>
+		  </fileset>
+		  <report format="frames" todir="./reports/html"/>
+		</junitreport>
 
 		<fail message="test failed" if="test.failure" />
 	
