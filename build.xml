@@ -4,9 +4,11 @@
    <target name="init">
 		<mkdir dir="build/classes"/>
 		<mkdir dir="dist" />
+   	<mkdir dir="./reports" />
+   	
 	</target>
 	
-	<target name="compile" depends="init" >
+	<target name="compile" depends="init,unit" >
 		<javac destdir="build/classes" debug="true" srcdir="src">
 			<classpath refid="compile.classpath"/>
 		</javac>
@@ -23,6 +25,23 @@
 		
 		
 		
+	</target>
+	
+	<target name="unit">
+		<junit printsummary="yes"  haltonfailure="yes">
+			<classpath>
+			            <pathelement location="build/classes" />
+			            <pathelement location="WebContent/WEB-INF/lib" />
+			        </classpath>
+			<test name="br.com.gese.testes.TesteLogin" haltonfailure="no" outfile="result">
+			    <formatter type="xml"/>
+			  </test>
+			
+		</junit>
+		
+
+		<fail message="test failed" if="test.failure" />
+	
 	</target>
 
 </project>

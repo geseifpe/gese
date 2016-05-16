@@ -1,14 +1,18 @@
 package br.com.gese.testes;
 
 import org.junit.Assert;
-import org.junit.Test;
 
-public class TesteLogin {
+import junit.framework.TestCase;
 
-	@Test
+public class TesteLogin extends TestCase {
+
+	
 	public void testar(){
 		Assert.assertEquals(2,2);
 	}
 	
+	public void testar1(){
+		Assert.assertEquals(2,2);
+	}
 	
 }
