@@ -32,7 +32,7 @@
 								</tr>
 								<tr>
 									<td>Lattes:</td>
-									<td>${aluno.linklattes}</td>
+									<td><a href="${aluno.linklattes}">Currículo Lattes</a></td>
 								</tr>
 								<tr>
 									<td>Email:</td>
