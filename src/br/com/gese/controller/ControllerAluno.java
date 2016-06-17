@@ -33,7 +33,7 @@ public class ControllerAluno {
 		//List<Campus> listaCampus = dao.getCampusId(8);
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
-	    return "telaCadastro/cadastroAluno";
+	    return "telaCadastro/cadastroAlunoTela";
 	}
 	
 	@RequestMapping("/inserirAluno")

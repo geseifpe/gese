@@ -66,9 +66,9 @@
 								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
 								value="Submeter Projeto" /> <input
 								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-								value="Convidar" /> <input
+								value="Convidar" /> <a href="logout"><input
 								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-								value="Sair" />
+								value="Sair" /></a>
 						</form>
 					</div>
 

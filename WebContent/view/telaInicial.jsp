@@ -11,8 +11,7 @@
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
-<script src="resources/bootstrap/js/bootstrap.min.js"
-	type="text/javascript"></script>
+<script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1; charset= UTF-8" />
@@ -76,7 +75,7 @@
 							<h3 class="text-left text-success">Acesso</h3>
 							<hr />
 							<fieldset>
-								<div class="form-group login">
+								<div class="form-group">
 									<div class="col-md-12" style="${display}" >
 										<div class="alert alert-danger" >
 											<strong> ${mensagem}</strong>
@@ -218,6 +217,6 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer>	
 </body>
 </html>

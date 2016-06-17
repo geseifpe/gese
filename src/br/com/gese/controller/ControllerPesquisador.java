@@ -6,25 +6,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.gese.dao.AlunoDao;
 import br.com.gese.dao.CampusDao;
 import br.com.gese.dao.CursoDao;
+import br.com.gese.dao.PesquisadorDao;
 import br.com.gese.dao.UsuarioDao;
-import br.com.gese.model.Aluno;
 import br.com.gese.model.Campus;
 import br.com.gese.model.Curso;
+import br.com.gese.model.Pesquisador;
 import br.com.gese.model.Usuario;
 import br.com.gese.util.Criptografia;
 import br.com.gese.util.Mensagem;
-
-
-
 
 @Controller
 public class ControllerPesquisador {
 	
 	@RequestMapping("/cadastroPesquisadorTela")
-	public String cadastroPesquisadorTela(Model model) {
+	public String CadastroPesquisador(Model model) {
 		CampusDao dao = new CampusDao();
 		List<Campus> listaCampus = dao.getCampus();
 		
@@ -33,28 +30,21 @@ public class ControllerPesquisador {
 		//List<Campus> listaCampus = dao.getCampusId(8);
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
-	    return "telaCadastro/cadastroPesquisador";
+	    return "telaCadastro/cadastroPesquisadorTela";
 	}
 	
 	@RequestMapping("/inserirPesquisador")
-	public String inserirPesquisador(Model model, Aluno aluno, Usuario usuario) {
-		AlunoDao dao = new AlunoDao();
+	public String inserirPesquisador(Model model, Pesquisador pesquisador, Usuario usuario) {
+		
+		PesquisadorDao dao = new PesquisadorDao();
 		UsuarioDao daoUsuario = new UsuarioDao();
-		dao.insertAluno(aluno);
+		dao.insertPesquisador(pesquisador);
 		usuario.setPassword(Criptografia.md5(usuario.getPassword()));
 		usuario.setAtivo("1");
-		usuario.setPerfil1("1");	
+		usuario.setPerfil2("1");
 		daoUsuario.insertUsuario(usuario);
-		model.addAttribute("mensagem", Mensagem.MsgAlunoInseridoSucesso);
-		model.addAttribute("url", "cadastroAlunoTela");
+		model.addAttribute("mensagem", Mensagem.MsgPesquisadorInseridoSucesso);
+		model.addAttribute("url", "cadastroPesquisadorTela");
 		return "mensagemTela";
-	}
-	
-	
-	@RequestMapping("/cadastroPesquisador")
-	public String CadastrarPesquisador() {
-					
-	    return "telaCadastro/cadastroPesquisador";
-	}
+	}	
 }
-

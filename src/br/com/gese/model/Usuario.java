@@ -42,12 +42,7 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLastaccess() {
-		return lastaccess;
-	}
-	public void setLastaccess(String lastaccess) {
-		this.lastaccess = lastaccess;
-	}
+	
 	public String getAtivo() {
 		return ativo;
 	}
@@ -59,6 +54,12 @@ public class Usuario {
 	}
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+	public String getLastaccess() {
+		return lastaccess;
+	}
+	public void setLastaccess(String lastaccess) {
+		this.lastaccess = lastaccess;
 	}
 	
 	
