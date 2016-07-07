@@ -35,7 +35,7 @@ public class PesquisadorDao {
 	public static void main(String[] args) {
 		deletePesquisador(12345678);
 		List<Pesquisador> lista = getPesquisador();
-		
+
 		// updateCategorias(8);
 	}
 
@@ -48,7 +48,7 @@ public class PesquisadorDao {
 
 		List<Pesquisador> listaCategoria = null;
 		try {
-			String webPage = url+getPesquisador;
+			String webPage = url + getPesquisador;
 
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
@@ -124,8 +124,16 @@ public class PesquisadorDao {
 		getHttpConnection(url + deletePesquisador + id, "DELETE");
 	}
 
-	public static void insertPesquisador(Pesquisador Pesquisador) {		
-		POST(url+postPesquisador, Pesquisador);		
+	public static void insertPesquisador(Pesquisador Pesquisador) {
+		
+		POST(url + postPesquisador, Pesquisador);
+		
+	}
+	
+	public static void updatePesquisador(Pesquisador Pesquisador) {
+		
+		POST(url + updatePesquisador, Pesquisador);
+		
 	}
 
 	public static void updateCategorias(int id) {

@@ -36,7 +36,7 @@ public class ControllerLogin {
 		String uri = null;		
 
 		try {
-			UsuarioDao daoUsuario = new UsuarioDao();			
+			UsuarioDao daoUsuario = new UsuarioDao();
 			Usuario usuarioLogado = daoUsuario.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
 			
 			if(usuarioLogado == null){							
@@ -56,11 +56,11 @@ public class ControllerLogin {
 				model.addAttribute("listaCampus", listaCampus);
 				model.addAttribute("listaCurso", listaCurso);
 				
-				if(usuarioLogado.getPerfil1().equals("1")) {					
+				if(usuarioLogado.getPerfil1().equals("1")) {
 					AlunoDao daoAluno= new AlunoDao();
 					Aluno aluno = daoAluno.getAlunoId(usuarioLogado.getCpf());					
-					session.setAttribute("alunoLogado", aluno); 
-					model.addAttribute("aluno", aluno);										
+					session.setAttribute("alunoLogado", aluno);
+					model.addAttribute("aluno", aluno);
 					uri = "telaAluno/aluno";
 					
 				} else if (usuarioLogado.getPerfil2().equals("1")) {

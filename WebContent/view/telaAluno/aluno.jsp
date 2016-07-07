@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
 <head>
-<title>Protótipo</title>
+<title>${aluno.nome}</title>
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
@@ -60,21 +61,22 @@
 				<div class="col-md-3 text-left">
 					<!-- Menu Principal -->
 					
-						<input class="btn btn-default mesmo-tamanho" type="submit"
-							name="opcao" value="Perfil" /> <input
-							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-							value="Mensagens" /> <input
-							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-							value="Relatório Mensal" /> <a href="logout"><input 
-							class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-							value="Sair" /></a>
-					
+					<input class="btn btn-default mesmo-tamanho" type="submit"
+						name="opcao" value="Perfil" /><input
+						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
+						value="Editar" /> <input class="btn btn-default mesmo-tamanho"
+						type="submit" name="opcao" value="Mensagens" /> <input
+						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
+						value="Relatório Mensal" /> <a href="logout"><input
+						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
+						value="Sair" /></a>
+
 				</div>
 				<%
 					String opcao = request.getParameter("opcao");
 					if (request.getParameter("opcao") == null) {
 				%>
-				<jsp:include page="perfil_aluno.jsp" />
+				<jsp:include page="editar_aluno.jsp" />
 
 				<%
 					} else {

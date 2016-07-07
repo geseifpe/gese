@@ -76,7 +76,7 @@
 						String opcao = request.getParameter("opcao");
 						if (request.getParameter("opcao") == null) {
 					%>
-					<jsp:include page="perfil_pesquisador.jsp" />
+					<jsp:include page="editar_pesquisador.jsp" />
 
 					<%
 						} else {

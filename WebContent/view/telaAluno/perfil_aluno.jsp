@@ -48,13 +48,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
-			<div class="panel-footer">
-				<form action="telaAlunoPerfil.html" method="get">
-					<button data-toggle="tooltip" type="submit"
-						class="btn btn-sm btn-info">Editar</button>
-				</form>
-			</div>
+			</div>			
 		</div>
 	</div>
 </div>

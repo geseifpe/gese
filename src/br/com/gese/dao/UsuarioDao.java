@@ -130,7 +130,7 @@ public class UsuarioDao {
 		return listaUsuario;
 	}
 
-	public static Usuario  login(String cpf, String senha) {
+	public static Usuario login(String cpf, String senha) {
 
 		Usuario Usuario = null;
 		
@@ -174,18 +174,19 @@ public class UsuarioDao {
 
 	
 	public static void deleteUsuario(int id) {
-
+		
 		getHttpConnection(url+deleteUsuario+id, "DELETE");
-
-
 	}
 
 	public static void insertUsuario(Usuario usuario) {
-				POST(url+postUsuario, usuario);
-
-
+		
+		POST(url+postUsuario, usuario);
 	}
-
+	
+	public static void updateUsuario(Usuario usuario) {
+		
+		POST(url + updateUsuario, usuario);
+	}
 	
 
 	private static List<Usuario> converterJsonToList(String json) {  

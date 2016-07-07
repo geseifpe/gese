@@ -7,5 +7,4 @@ public class Mensagem {
 	public static final String MsgLoginIncorreto = "Cpf ou Senha incorreto(s).";
 	public static final String MsgAlunoAlteradoSucesso = "Aluno Alterado com sucesso";
 	
-
 }

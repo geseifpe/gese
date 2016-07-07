@@ -1,6 +1,5 @@
 package br.com.gese.dao;
 
-
 import java.util.List;
 import java.util.logging.Level;
 import com.google.gson.Gson;
@@ -22,12 +21,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Logger;
 
-
-
-
 public class AlunoDao {
 	private static final Logger LOG = Logger.getLogger(Aluno.class.getName());
-	private static final String url = Url.urlPrincipal+Url.aluno;
+	private static final String url = Url.urlPrincipal + Url.aluno;
 	private static final String getAluno = "queryAll";
 	private static final String getAlunoID = "load/";
 	private static final String postAluno = "insert/";
@@ -38,23 +34,22 @@ public class AlunoDao {
 
 	public static void main(String[] args) {
 
+		List<Aluno> lista = getAluno();
 
-		List<Aluno>  lista = getAluno();
-		
 		deleteAluno(12);
-		//updateCategorias(8);
+		// updateCategorias(8);
 	}
 
 	/**
 	 * Método que retorna uma lista de Aluno
+	 * 
 	 * @return
 	 */
 	public static List<Aluno> getAluno() {
 
 		List<Aluno> listaCategoria = null;
 		try {
-			String webPage = url+getAluno;
-
+			String webPage = url + getAluno;
 
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
@@ -86,16 +81,13 @@ public class AlunoDao {
 		}
 		return listaCategoria;
 	}
-	
-	
-	
-	public static Aluno  getAlunoId(String id) {
+
+	public static Aluno getAlunoId(String id) {
 
 		Aluno Aluno = null;
-		
-		try {
-			String webPage = url+getAlunoID+id;
 
+		try {
+			String webPage = url + getAlunoID + id;
 
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
@@ -119,96 +111,95 @@ public class AlunoDao {
 			String result = sb.toString();
 			System.out.println(result);
 			Aluno = converterJsonToObjeto(result);
-			
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+
 		return Aluno;
 	}
 
-
-	
 	public static void deleteAluno(int id) {
 
-		getHttpConnection(url+deleteAluno+id, "DELETE");
-
+		getHttpConnection(url + deleteAluno + id, "DELETE");
 
 	}
 
 	public static void insertAluno(Aluno Aluno) {
-				POST(url+postAluno, Aluno);
+		
+		POST(url + postAluno, Aluno);
+		
+	}
 
+	public static void updateAluno(Aluno aluno) {
+		
+		POST(url + updateAluno, aluno);
 
 	}
 
 	public static void updateCategorias(int id) {
-//		Aluno Aluno = new Aluno();
-//		Aluno.setId(id);
-//		Aluno.setNome("Copacabana");
-//		Aluno.setEstado("RJ");
-//		POST(url+updateAluno, Aluno);
+		// Aluno Aluno = new Aluno();
+		// Aluno.setId(id);
+		// Aluno.setNome("Copacabana");
+		// Aluno.setEstado("RJ");
+		// POST(url+updateAluno, Aluno);
 
 	}
 
-
-	private static List<Aluno> converterJsonToList(String json) {  
+	private static List<Aluno> converterJsonToList(String json) {
 		Gson gson = new Gson();
-		Type collectionType = new TypeToken<List<Aluno>>(){}.getType();
+		Type collectionType = new TypeToken<List<Aluno>>() {
+		}.getType();
 		List<Aluno> lista = gson.fromJson(json, collectionType);
-		return lista; 
+		return lista;
 	}
-	
-	private static Aluno converterJsonToObjeto(String json) {  
+
+	private static Aluno converterJsonToObjeto(String json) {
 		Gson gson = new Gson();
-		
+
 		Aluno Aluno = gson.fromJson(json, Aluno.class);
-		return Aluno; 
+		return Aluno;
 	}
 
-
-	//DELETE
-	public  static HttpURLConnection getHttpConnection(String url, String type){
+	// DELETE
+	public static HttpURLConnection getHttpConnection(String url, String type) {
 		URL uri = null;
 		HttpURLConnection con = null;
 		String result = null;
-		try{
+		try {
 			String authString = name + ":" + password;
-			//System.out.println("auth string: " + authString);
+			// System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
 			String authStringEnc = new String(authEncBytes);
 			uri = new URL(url);
 			con = (HttpURLConnection) uri.openConnection();
 			con.setRequestProperty("Content-Type", "application/json");
 			con.setRequestProperty("Authorization", "Basic " + authStringEnc);
-			con.setRequestMethod(type); //type: POST, PUT, DELETE, GET
+			con.setRequestMethod(type); // type: POST, PUT, DELETE, GET
 			con.setDoOutput(true);
 			con.setDoInput(true);
-			con.setConnectTimeout(60000); //60 secs
-			con.setReadTimeout(60000); //60 secs
+			con.setConnectTimeout(60000); // 60 secs
+			con.setReadTimeout(60000); // 60 secs
 			con.setRequestProperty("Content-Type", "application/json");
 			con.connect();
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String temp = null;
 			StringBuilder sb = new StringBuilder();
-			while((temp = in.readLine()) != null){
+			while ((temp = in.readLine()) != null) {
 				sb.append(temp).append(" ");
 			}
 			result = sb.toString();
 			in.close();
-		}catch(Exception e){
-			System.out.println( "connection i/o failed" );
+		} catch (Exception e) {
+			System.out.println("connection i/o failed");
 		}
-
 
 		return con;
 	}
 
-	private static void POST(String uri, Aluno categoria){
-
+	private static void POST(String uri, Aluno categoria) {
 
 		try {
 
@@ -254,10 +245,4 @@ public class AlunoDao {
 
 	}
 
-	
-
-
-
-
 }
-
