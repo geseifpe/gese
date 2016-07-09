@@ -15,12 +15,12 @@
 	</target>
 	
 	<target name="war" depends="compile">
-		<war destfile="dist/Projeto_Pibiti_2016.war" webxml="WebContent/WEB-INF/web.xml">
+		<war destfile="dist/Projeto_Pibit_2016.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent"/>
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
 		</war>
-		<copy file="dist/Projeto_Pibiti_2016.war" todir="/opt/tomcat/webapps"/>
+		<copy file="dist/Projeto_Pibit_2016.war" todir="/opt/tomcat/webapps"/>
 	
 		
 		
