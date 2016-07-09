@@ -102,7 +102,8 @@
 					<select id="campusId" name="campusId" class="form-control">
 
 						<c:forEach var="campus" items="${listaCampus}" varStatus="id">
-							<option value="${campus.id}">${campus.nome}</option>
+							<option value="${campus.id}" 
+							<c:if test="${ pesquisador.campusId == campus.id }">selected="selected"</c:if>>${campus.nome}</option>
 
 						</c:forEach>
 					</select>
@@ -114,11 +115,11 @@
 					Sexo</label>
 				<div class="col-md-4">
 					<select id="sexo" name="sexo" class="form-control">
-						<option value="m"
-							<c:if test="${aluno.sexo == 'm'.charAt(0) }">selected="selected"</c:if>>Masculino</option>
+						<option value="M"
+							<c:if test="${pesquisador.sexo == 'M'.charAt(0) }">selected="selected"</c:if>>Masculino</option>
 
-						<option value="f"
-							<c:if test="${aluno.sexo == 'f'.charAt(0) }">selected="selected"</c:if>>Feminino</option>
+						<option value="F"
+							<c:if test="${pesquisador.sexo == 'F'.charAt(0) }">selected="selected"</c:if>>Feminino</option>
 					</select>
 				</div>
 			</div>

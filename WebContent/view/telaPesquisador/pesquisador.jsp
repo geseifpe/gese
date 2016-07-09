@@ -10,6 +10,36 @@
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
+	<SCRIPT type="text/javascript">
+	$(document).ready(
+		    function(){
+		    	$("#perfil").show();
+		    	$("#editar").hide();
+		    	$("#convidar").hide();
+		    	$("#submeter").hide();
+		    	$("#mensagem").hide();
+
+		    });
+	
+	function exibirinclude(id){
+		var e = document.getElementById(id);
+	      
+	
+		$("#perfil").hide();
+    	$("#editar").hide();
+    	$("#convidar").hide();
+    	$("#submeter").hide();
+    	$("#mensagem").hide();
+		$("#"+id).show();
+		
+	
+	       
+	}
+	
+	
+	
+	
+	</SCRIPT>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1; charset= UTF-8" />
@@ -59,55 +89,48 @@
 					<div class="col-md-3 text-left">
 						<!-- Menu Principal -->
 						<form method="post">
-							<input class="btn btn-default mesmo-tamanho" type="submit"
-								name="opcao" value="Perfil" /> <input
-								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-								value="Menssagens" /> <input
-								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-								value="Submeter Projeto" /> <input
-								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-								value="Convidar" /> <a href="logout"><input
-								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
+							<input class="btn btn-default mesmo-tamanho" type=""button""
+								name="opcao" value="Perfil" onclick="exibirinclude('perfil')"/> 
+								<input
+						        class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
+						         onclick="exibirinclude('editar')" value="Editar" />
+								<input
+								class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
+								value="Menssagens" onclick="exibirinclude('mensagem')"/> 
+								<input	class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
+								value="Submeter Projeto" onclick="exibirinclude('submeter')"/> 
+								<input
+								class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
+								value="Convidar" onclick="exibirinclude('convidar')"/> 
+								
+								<a href="logout"><input
+								class="btn btn-default mesmo-tamanho" type="button" name="opcao"
 								value="Sair" /></a>
 						</form>
 					</div>
-
-					<%
-						String opcao = request.getParameter("opcao");
-						if (request.getParameter("opcao") == null) {
-					%>
-					<jsp:include page="editar_pesquisador.jsp" />
-
-					<%
-						} else {
-							if (opcao.equals("Perfil")) {
-					%>
+					
+				<DIV id="perfil">
 					<jsp:include page="perfil_pesquisador.jsp" />
+				</DIV>
 
-					<%
-						} else if (opcao.equals("Menssagens")) {
-					%>
+				<DIV id="editar">
+					<jsp:include page="editar_pesquisador.jsp" />
+				</DIV>
+
+				<DIV id="mensagem">
 					<jsp:include page="menssagem_pesquisador.jsp" />
+				</DIV>
 
-					<%
-						} else if (opcao.equals("Submeter Projeto")) {
-					%>
-					<jsp:include page="submeter_projeto_pesquisador.jsp" />
-					<%
-						} else if (opcao.equals("Convidar")) {
-					%>
+				<DIV id="convidar">
 					<jsp:include page="convidar_pesquisador.jsp" />
+				</DIV>
+				
+				<DIV id="submeter">
+					<jsp:include page="submeter_projeto_pesquisador.jsp" />
+				</DIV>
 
-					<%
-						} else if (opcao.equals("Sair")) {
-								opcao = "http://localhost:8080/Projeto_Pibiti_2016/";
-								response.sendRedirect(opcao);
-					%>
+					
 
-					<%
-						}
-						}
-					%>
 
 				</div>
 			</div>		

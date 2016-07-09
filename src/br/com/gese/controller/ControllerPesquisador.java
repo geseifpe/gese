@@ -53,16 +53,20 @@ public class ControllerPesquisador {
 	}
 	
 	@RequestMapping("/updatePesquisador")
-	public String updateAluno(Model model, Pesquisador pesquisador) {		
+	public String updateAluno(Model model,HttpSession session, Pesquisador pesquisador) {		
 		
 		PesquisadorDao daoPesq = new PesquisadorDao();	
 		daoPesq.updatePesquisador(pesquisador);
+		model.addAttribute("mensagem", Mensagem.MsgAlunoAlteradoSucesso);
+		model.addAttribute("url", "retornarTelaAluno");
+		model.addAttribute("pesquisador", pesquisador);
+		session.setAttribute("pesquisadorLogado", pesquisador);
 		
 		return "forward:pesquisador";
 	}
 	
 	@RequestMapping("/pesquisador")
-	public String aluno(Model model, Pesquisador pesquisador) {
+	public String aluno(Model model,HttpSession session, Pesquisador pesquisador) {
 		
 		CampusDao dao = new CampusDao();
 		List<Campus> listaCampus = dao.getCampus();
@@ -76,6 +80,23 @@ public class ControllerPesquisador {
 		model.addAttribute(pesquisador);
 		
 		return "telaPesquisador/pesquisador";		
+	}
+	
+	@RequestMapping("/retornarTelaPesquisador")
+	public String retornarTelaAluno(Model model,HttpSession session) {		
+		Pesquisador pesquisador = (Pesquisador)  session.getAttribute("pesquisadorLogado");
+		CampusDao dao = new CampusDao();
+        List<Campus> listaCampus = dao.getCampus();
+		
+		CursoDao daoCurso = new CursoDao();
+		List<Curso> listaCurso = daoCurso.getCurso();
+		//List<Campus> listaCampus = dao.getCampusId(8);
+		model.addAttribute("listaCampus", listaCampus);
+		model.addAttribute("listaCurso", listaCurso);
+		
+		model.addAttribute(pesquisador);
+
+		return "telaPesquisador/pesquisador";
 	}
 	
 	

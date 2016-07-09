@@ -24,8 +24,8 @@ public class Pesquisador {
 	@SerializedName("regime")
 	private String regime;
 			
-	@SerializedName("campus_id")
-	private int campus_id;
+	@SerializedName("campusId")
+	private int campusId;
 	
 	@SerializedName("departamento")
 	private int departamento;
@@ -120,14 +120,15 @@ public class Pesquisador {
 		this.regime = regime;
 	}
 	
+	
 	public int getCampusId() {
-		return campus_id;
+		return campusId;
 	}
-	
-	public void setCampusId(int campus_id) {
-		this.campus_id = campus_id;		
+
+	public void setCampusId(int campusId) {
+		this.campusId = campusId;
 	}
-	
+
 	public int getDepartamento() {
 		return departamento;
 	}
@@ -168,14 +169,7 @@ public class Pesquisador {
 		this.email2 = email2;		
 	}
 
-	public int getCampus_id() {
-		return campus_id;
-	}
-
-	public void setCampus_id(int campus_id) {
-		this.campus_id = campus_id;
-	}
-
+	
 	public String getLinklattes() {
 		return linklattes;
 	}

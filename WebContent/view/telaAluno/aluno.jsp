@@ -12,6 +12,34 @@
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
+<SCRIPT type="text/javascript">
+	$(document).ready(
+		    function(){
+		    	$("#perfil").show();
+		    	$("#editar").hide();
+		    	$("#mensagem").hide();
+		    	$("#relatorio").hide();
+
+		    });
+	
+	function exibirinclude(id){
+		var e = document.getElementById(id);
+	      
+	
+		$("#perfil").hide();
+    	$("#editar").hide();
+    	$("#mensagem").hide();
+    	$("#relatorio").hide();
+		$("#"+id).show();
+		
+	
+	       
+	}
+	
+	
+	
+	
+	</SCRIPT>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1; charset= UTF-8" />
@@ -60,50 +88,40 @@
 			<div class="row">
 				<div class="col-md-3 text-left">
 					<!-- Menu Principal -->
-					
+
 					<input class="btn btn-default mesmo-tamanho" type="submit"
-						name="opcao" value="Perfil" /><input
+						name="opcao" value="Perfil" onclick="exibirinclude('perfil')" /> <input
+						class="btn btn-default mesmo-tamanho" type="button" name="opcao"
+						onclick="exibirinclude('editar')" value="Editar" /> <input
+						class="btn btn-default mesmo-tamanho" type="button" name="opcao"
+						value="Mensagens" onclick="exibirinclude('mensagem')" /> <input
 						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-						value="Editar" /> <input class="btn btn-default mesmo-tamanho"
-						type="submit" name="opcao" value="Mensagens" /> <input
-						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-						value="Relatório Mensal" /> <a href="logout"><input
+						value="Relatório Mensal" onclick="exibirinclude('relatorio')" /> <a href="logout"> <input
 						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
 						value="Sair" /></a>
 
 				</div>
-				<%
-					String opcao = request.getParameter("opcao");
-					if (request.getParameter("opcao") == null) {
-				%>
-				<jsp:include page="editar_aluno.jsp" />
 
-				<%
-					} else {
-						if (opcao.equals("Perfil")) {
-				%>
-				<jsp:include page="perfil_aluno.jsp" />
+				<DIV id="perfil">
+					<jsp:include page="perfil_aluno.jsp" />
+				</DIV>
 
-				<%
-					} else if (opcao.equals("Menssagens")) {
-				%>
-				<jsp:include page="menssagem_aluno.jsp" />
+				<DIV id="editar">
+					<jsp:include page="editar_aluno.jsp" />
+				</DIV>
 
-				<%
-					} else if (opcao.equals("Relatório Mensal")) {
-				%>
-				<jsp:include page="rel_mensal_aluno.jsp" />
+				<DIV id="mensagem">
+					<jsp:include page="menssagem_aluno.jsp" />
+				</DIV>
 
-				<%
-					} else if (opcao.equals("Sair")) {
-							opcao = "http://localhost:8080/Projeto_Pibiti_2016/";
-							response.sendRedirect(opcao);
-				%>
+				<DIV id="relatorio">
+					<jsp:include page="rel_mensal_aluno.jsp" />
+				</DIV>
 
-				<%
-					}
-					}
-				%>
+
+
+
+
 			</div>
 		</div>
 		<hr />

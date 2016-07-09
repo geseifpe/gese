@@ -131,29 +131,8 @@ public class ControllerLogin {
 		return uri;
 	}
 	
-//	@RequestMapping("/loginPesquisador")
-//	public String LoginPesquisador(Model model, HttpSession session,Usuario usuario) {
-//		String uri = null;
-//		try {
-//			PesquisadorDao daoPesquisador= new PesquisadorDao();
-//			UsuarioDao daoUsuario = new UsuarioDao();
-//			Usuario usuarioLogado = daoUsuario.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
-//			if(usuarioLogado == null){				
-//				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
-//				model.addAttribute("display", "");
-//				uri = "telaInicial";
-//			}else{
-//				Pesquisador pesquisador = daoPesquisador.getPesquisadorId(usuarioLogado.getCpf());
-//				session.setAttribute("usuarioLogado", usuarioLogado); 
-//				session.setAttribute("pesquisadorLogado", pesquisador); 
-//				model.addAttribute("pesquisador", pesquisador);
-//				uri = "telaPesquisador/pesquisador";
-//			}
-//		} catch (Exception e) {
-//			return "forward:/";
-//		}
-//		return uri;
-//	}
+	
+
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {

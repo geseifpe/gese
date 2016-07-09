@@ -69,12 +69,32 @@ public class ControllerAluno {
 	}
 	
 	@RequestMapping("/updateAluno")
-	public String updateAluno(Model model, Aluno aluno) {			
+	public String updateAluno(Model model,HttpSession session, Aluno aluno) {			
 		
 		AlunoDao daoAlu = new AlunoDao();
 		daoAlu.updateAluno(aluno);
-
-		return "forward:aluno";
+		model.addAttribute("mensagem", Mensagem.MsgAlunoAlteradoSucesso);
+		model.addAttribute("url", "retornarTelaAluno");
+		model.addAttribute("aluno", aluno);
+		session.setAttribute("alunoLogado", aluno);
+		return "mensagemTela";
+	}
+	
+	@RequestMapping("/retornarTelaAluno")
+	public String retornarTelaAluno(Model model,HttpSession session) {		
+		Aluno aluno = (Aluno)  session.getAttribute("alunoLogado");
+		model.addAttribute("aluno",aluno);
+		CampusDao dao = new CampusDao();
+		List<Campus> listaCampus = dao.getCampus();
+		
+		CursoDao daoCurso = new CursoDao();
+		List<Curso> listaCurso = daoCurso.getCurso();
+		//List<Campus> listaCampus = dao.getCampusId(8);
+		model.addAttribute("listaCampus", listaCampus);
+		model.addAttribute("listaCurso", listaCurso);
+		
+		model.addAttribute(aluno);
+		return "telaAluno/aluno";
 	}
 		
 }
