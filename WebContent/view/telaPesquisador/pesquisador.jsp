@@ -5,44 +5,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Protótipo</title>
+
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
+
+<link href="resources/bootstrap/css/fileinput.min.css" media="all"
+	rel="stylesheet" type="text/css" />
+
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
-	<SCRIPT type="text/javascript">
-	$(document).ready(
-		    function(){
-		    	$("#perfil").show();
-		    	$("#editar").hide();
-		    	$("#convidar").hide();
-		    	$("#submeter").hide();
-		    	$("#mensagem").hide();
 
-		    });
+<script src="resources/bootstrap/js/fileinput.min.js"
+	type="text/javascript"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#perfil").show();
+		$("#editar").hide();
+		$("#convidar").hide();
+		$("#submeter").hide();
+		$("#mensagem").hide();
+	});
 	
-	function exibirinclude(id){
+	function exibirinclude(id) {
+
 		var e = document.getElementById(id);
-	      
-	
 		$("#perfil").hide();
-    	$("#editar").hide();
-    	$("#convidar").hide();
-    	$("#submeter").hide();
-    	$("#mensagem").hide();
-		$("#"+id).show();
-		
-	
-	       
+		$("#editar").hide();
+		$("#convidar").hide();
+		$("#submeter").hide();
+		$("#mensagem").hide();
+		$("#" + id).show();
+
 	}
-	
-	
-	
-	
-	</SCRIPT>
+</script>
 
 <meta name="viewport"
-	content="width=device-width, initial-scale=1; charset= UTF-8" />
+	content="width=device-width, initial-scale=1, charset= UTF-8" />
 <link href="resources/css/base.css" rel="stylesheet" type="text/css" />
 </head>
 <body data-spy="scroll">
@@ -76,7 +78,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 text-justify">
-					<img src="resources\img\ifpeImagem.png"
+					<img src="resources\img\IFPELogo.png"
 						class="img-responsive img-rounded" alt="Logotipo">
 				</div>
 			</div>
@@ -84,56 +86,49 @@
 	</div>
 	<div class="corpo">
 		<div class="section">
-			<hr />		
-				<div class="row">
-					<div class="col-md-3 text-left">
-						<!-- Menu Principal -->
-						<form method="post">
-							<input class="btn btn-default mesmo-tamanho" type=""button""
-								name="opcao" value="Perfil" onclick="exibirinclude('perfil')"/> 
-								<input
-						        class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
-						         onclick="exibirinclude('editar')" value="Editar" />
-								<input
-								class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
-								value="Menssagens" onclick="exibirinclude('mensagem')"/> 
-								<input	class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
-								value="Submeter Projeto" onclick="exibirinclude('submeter')"/> 
-								<input
-								class="btn btn-default mesmo-tamanho" type=""button"" name="opcao"
-								value="Convidar" onclick="exibirinclude('convidar')"/> 
-								
-								<a href="logout"><input
-								class="btn btn-default mesmo-tamanho" type="button" name="opcao"
-								value="Sair" /></a>
-						</form>
-					</div>
-					
-				<DIV id="perfil">
-					<jsp:include page="perfil_pesquisador.jsp" />
-				</DIV>
-
-				<DIV id="editar">
-					<jsp:include page="editar_pesquisador.jsp" />
-				</DIV>
-
-				<DIV id="mensagem">
-					<jsp:include page="menssagem_pesquisador.jsp" />
-				</DIV>
-
-				<DIV id="convidar">
-					<jsp:include page="convidar_pesquisador.jsp" />
-				</DIV>
-				
-				<DIV id="submeter">
-					<jsp:include page="submeter_projeto_pesquisador.jsp" />
-				</DIV>
-
-					
-
-
+			<hr />
+			<div class="row">
+				<div class="col-md-3 text-left">
+					<!-- Menu Principal -->
+					<form method="post">
+						<input class="btn btn-default mesmo-tamanho" type="button"
+							name="opcao" value="Perfil" onclick="exibirinclude('perfil')" />
+						<input class="btn btn-default mesmo-tamanho" type="button"
+							name="opcao" onclick="exibirinclude('editar')" value="Editar" />
+						<input class="btn btn-default mesmo-tamanho" type="button"
+							name="opcao" value="Menssagens"
+							onclick="exibirinclude('mensagem')" /> <input
+							class="btn btn-default mesmo-tamanho" type="button" name="opcao"
+							value="Submeter Projeto" onclick="exibirinclude('submeter')" />
+						<input class="btn btn-default mesmo-tamanho" type="button"
+							name="opcao" value="Convidar" onclick="exibirinclude('convidar')" />
+						<a href="logout"><input class="btn btn-default mesmo-tamanho"
+							type="button" name="opcao" value="Sair" /></a>
+					</form>
 				</div>
-			</div>		
+
+				<div id="perfil">
+					<jsp:include page="perfil_pesquisador.jsp" />
+				</div>
+
+				<div id="editar">
+					<jsp:include page="editar_pesquisador.jsp" />
+				</div>
+
+				<div id="mensagem">
+					<jsp:include page="menssagem_pesquisador.jsp" />
+				</div>
+
+				<div id="convidar">
+					<jsp:include page="convidar_pesquisador.jsp" />
+				</div>
+
+				<div id="submeter">
+					<jsp:include page="submeter_projeto_pesquisador.jsp" />
+				</div>
+
+			</div>
+		</div>
 		<hr>
 	</div>
 	<footer class="section">

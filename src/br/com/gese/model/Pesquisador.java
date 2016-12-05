@@ -24,11 +24,11 @@ public class Pesquisador {
 	@SerializedName("regime")
 	private String regime;
 			
-	@SerializedName("campusId")
+	@SerializedName("campus_id")
 	private int campusId;
 	
-	@SerializedName("departamento")
-	private int departamento;
+	@SerializedName("departamento_id")
+	private int departamento_id;
 	
 	@SerializedName("telefone")
 	private String telefone;
@@ -125,16 +125,16 @@ public class Pesquisador {
 		return campusId;
 	}
 
-	public void setCampusId(int campusId) {
-		this.campusId = campusId;
+	public void setCampusId(int campus_id) {
+		this.campusId = campus_id;
 	}
 
 	public int getDepartamento() {
-		return departamento;
+		return departamento_id;
 	}
 	
-	public void setDepartamento(int departamento) {
-		this.departamento = departamento;		
+	public void setDepartamento(int departamento_id) {
+		this.departamento_id = departamento_id;		
 	}
 	
 	public String getTelefone() {

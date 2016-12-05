@@ -1,27 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="col-md-7">
-
-	<form data-toggle="validator" action="updateAluno"
-		class="form-horizontal" method="post" role="form">
-
+<div class="col-md-8">
+	<form class="form-horizontal" action="updateAluno" method="post"
+		data-toggle="validator" role="form">
 		<fieldset>
 			<h3 class="text-success">Editar Aluno</h3>
 			<hr />
+			<input type="text" name="cpf" value="${aluno.cpf}" hidden="hidden" />
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="nome">Nome</label>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<input id="nome" name="nome" type="text"
 						class="form-control input-md" maxlength="50" value="${aluno.nome}" />
 				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-md-2 control-label" for="cpf">CPF</label>
-				<div class="col-md-4">
-					<input id="cpf" name="cpf" type="text"
-						class="form-control input-md" maxlength="11" value="${aluno.cpf}" />
-				</div>
-			</div>
+			</div>			
 
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="campusId">Informe
@@ -45,7 +36,7 @@
 					<select id="cursoId" name="cursoId" class="form-control">
 
 						<c:forEach var="curso" items="${listaCurso}" varStatus="id">
-							<option value="${curso.id }"
+							<option value="${curso.id}"
 								<c:if test="${curso.id == aluno.cursoId}">selected="selected"</c:if>>${curso.nome}</option>
 						</c:forEach>
 					</select>
@@ -76,11 +67,11 @@
 					seu Sexo</label>
 				<div class="col-md-4">
 					<select id="sexo" name="sexo" class="form-control">
-						<option value="m"
-							<c:if test="${aluno.sexo == 'm'.charAt(0) }">selected="selected"</c:if>>Masculino</option>
+						<option value="M"
+							<c:if test="${aluno.sexo == 'M'.charAt(0) }">selected="selected"</c:if>>Masculino</option>
 
-						<option value="f"
-							<c:if test="${aluno.sexo == 'f'.charAt(0) }">selected="selected"</c:if>>Feminino</option>
+						<option value="F"
+							<c:if test="${aluno.sexo == 'F'.charAt(0) }">selected="selected"</c:if>>Feminino</option>
 					</select>
 				</div>
 			</div>
@@ -150,5 +141,5 @@
 			</div>
 		</fieldset>
 	</form>
+	<script src="resources/js/validator.min.js" type="text/javascript"></script>
 </div>
-<script src="resources/js/validator.min.js" type="text/javascript"></script>

@@ -1,4 +1,3 @@
-
 <div class="row">
 	<div class="col-md-7 col-lg-8 col-lg-offset-0">
 		<div class="panel panel-success">

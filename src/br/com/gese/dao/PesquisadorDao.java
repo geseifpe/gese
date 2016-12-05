@@ -1,10 +1,12 @@
 package br.com.gese.dao;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -14,7 +16,18 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import com.google.gson.Gson;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.core.util.Base64;
 
@@ -108,8 +121,9 @@ public class PesquisadorDao {
 				sb.append(charArray, 0, numCharsRead);
 			}
 			String result = sb.toString();
-			System.out.println(result);
+			System.out.println(result);			
 			pesquisador = converterJsonToObjeto(result);
+			System.out.println(pesquisador.getCampusId());
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -124,15 +138,15 @@ public class PesquisadorDao {
 		getHttpConnection(url + deletePesquisador + id, "DELETE");
 	}
 
-	public static void insertPesquisador(Pesquisador Pesquisador) {
+	public static void insertPesquisador(Pesquisador pesquisador) {
 		
-		POST(url + postPesquisador, Pesquisador);
+		POST(url + postPesquisador, pesquisador);
 		
 	}
 	
-	public static void updatePesquisador(Pesquisador Pesquisador) {
+	public static void updatePesquisador(Pesquisador pesquisador) {
 		
-		POST(url + updatePesquisador, Pesquisador);
+		POST(url + updatePesquisador, pesquisador);
 		
 	}
 
@@ -155,11 +169,12 @@ public class PesquisadorDao {
 
 	private static Pesquisador converterJsonToObjeto(String json) {
 		Gson gson = new Gson();
-
+		
 		Pesquisador pesquisador = gson.fromJson(json, Pesquisador.class);
+		
 		return pesquisador;
 	}
-
+	
 	// DELETE
 	public static HttpURLConnection getHttpConnection(String url, String type) {
 		URL uri = null;
@@ -241,4 +256,5 @@ public class PesquisadorDao {
 		}
 
 	}
+	
 }

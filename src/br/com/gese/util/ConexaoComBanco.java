@@ -19,7 +19,7 @@ public class ConexaoComBanco {
 			throw new SQLException(e);
 		}
 		return DriverManager.getConnection("jdbc:mysql://localhost:3306/" +
-												banco,usuario, password );
+												banco, usuario, password );
 										
 		
 	}

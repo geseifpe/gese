@@ -15,9 +15,11 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 		boolean acesso = false;
 		String uri = request.getRequestURI();
 		if (uri.contains("/resources/bootstrap") || uri.contains("/resources/css") || uri.contains("/resources/img")
-				|| uri.contains("/resources/js") || uri.endsWith("/cadastroPesquisadorTela") || uri.endsWith("logout")
-				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/telainicial") || uri.endsWith("loginAluno")|| uri.endsWith("/")
-				|| uri.endsWith("/cadastroAlunoTela")|| uri.endsWith("/inserirAluno")|| uri.endsWith("/inserirPesquisador")   ) {
+				|| uri.contains("/resources/js") || uri.endsWith("/cadastroPesquisador") || uri.endsWith("/cadastroAluno") 
+				|| uri.endsWith("/telainicial") || uri.endsWith("/login")|| uri.endsWith("/")
+				|| uri.endsWith("/telaAluno/aluno")|| uri.endsWith("/inserirAluno") || uri.endsWith("/updateAluno")
+				|| uri.endsWith("/uploadMultipleFile") || uri.endsWith("/uploadFile") || uri.endsWith("/inserirPesquisador")
+				|| uri.endsWith("/updatePesquisador") || uri.endsWith("/submeterProjeto") || uri.endsWith("logout")) {
 			
 				 acesso = true;
 			
@@ -27,8 +29,8 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 				Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
 				acesso = true;
 			}else{
-				if (!acesso && request.getSession().getAttribute("usuarioLogado") == null && (uri.endsWith("loginAluno") ) ) {
-					response.sendRedirect("/Projeto_Pibiti_2016/");
+				if (!acesso && request.getSession().getAttribute("usuarioLogado") == null && (uri.endsWith("/login") ) ) {
+					response.sendRedirect("/gese/");
 					
 				}
 			}

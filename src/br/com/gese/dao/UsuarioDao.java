@@ -43,7 +43,7 @@ public class UsuarioDao {
 
 		List<Usuario>  lista = getUsuario();
 		
-		deleteUsuario(12);
+		deleteUsuario(2);
 		//updateCategorias(8);
 	}
 
@@ -170,8 +170,6 @@ public class UsuarioDao {
 	
 		return Usuario;
 	}
-
-
 	
 	public static void deleteUsuario(int id) {
 		

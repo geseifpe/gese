@@ -16,14 +16,13 @@
 <body>
 	<table class="table">
 		<thead>
-			<tr class="filters">
+			<tr class="filters">			
 				<th><input type="text" class="form-control" placeholder="Id"
-					disabled>
+					disabled/>
 				<th><input type="text" class="form-control" placeholder="Nome"
-					disabled></th>
+					disabled/></th>
 				<th><input type="text" class="form-control"
-					placeholder="Estado" disabled></th>
-
+					placeholder="Estado" disabled/></th>
 			</tr>
 		</thead>
 		<tbody>

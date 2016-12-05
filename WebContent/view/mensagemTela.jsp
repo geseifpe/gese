@@ -169,7 +169,7 @@
 			<div class="row">
 
 				<div class="col-md-3 text-justify">
-					<img src="resources\img\ifpeImagem.png"
+					<img src="resources\img\IFPELogo.png"
 						class="img-responsive img-rounded" alt="Logotipo">
 				</div>
 

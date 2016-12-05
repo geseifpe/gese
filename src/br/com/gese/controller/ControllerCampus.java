@@ -14,17 +14,16 @@ public class ControllerCampus {
 	
 	@RequestMapping("/listarCampus")
 	public String listarCampus(Model model) {
-		CampusDao dao = new CampusDao();
-		List<Campus> listaCampus = dao.getCampus();
-		//List<Campus> listaCampus = dao.getCampusId(8);
+		
+		List<Campus> listaCampus = CampusDao.getCampus();
 		model.addAttribute("listaCampus", listaCampus);
 	    return "campus";
 	}
 	
 	@RequestMapping("/inserirCampus")
 	public String inserirCampus(Model model, Campus campus) {
-		CampusDao dao = new CampusDao();
-		dao.insertCampus(campus);
+		
+		CampusDao.insertCampus(campus);
 		model.addAttribute("mensagem", "Campus inserido com sucesso");
 	    return "forward:listarCampus";
 	}

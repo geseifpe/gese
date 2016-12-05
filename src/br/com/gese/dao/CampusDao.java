@@ -23,9 +23,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Logger;
 
-
-
-
 public class CampusDao {
 	private static final Logger LOG = Logger.getLogger(Campus.class.getName());
 	private static final String url = Url.urlPrincipal+Url.campus;
@@ -40,8 +37,6 @@ public class CampusDao {
 	public static void main(String[] args) {
 
 
-		List<Campus>  lista = getCampus();
-		
 		deleteCampus(12);
 		//updateCategorias(8);
 	}

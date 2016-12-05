@@ -12,7 +12,7 @@ public class Aluno {
 	@SerializedName("matricula")
 	private String matricula;
 	
-	@SerializedName("cursoId")
+	@SerializedName("curso_id")
 	private int cursoId;
 	
 	@SerializedName("sexo")
@@ -21,7 +21,7 @@ public class Aluno {
 	@SerializedName("nascimento")
 	private String nascimento;
 	
-	@SerializedName("campusId")
+	@SerializedName("campus_id")
 	private int campusId;
 	
 	@SerializedName("telefone")
@@ -120,7 +120,6 @@ public class Aluno {
 		this.email = email;
 	}
 	
-	
 	public String getLinklattes() {
 		return linklattes;
 	}
@@ -129,21 +128,15 @@ public class Aluno {
 		this.linklattes = linklattes;
 	}
 
-	
-
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
 	
 	public String getSexoCompleto(){
-		if(this.sexo == 'm'){
+		if(this.sexo == 'M'){
 			return "Masculino";
 		}else{
 			return "Feminino";
 		}
 	}
-	
-	
-	
-	
 }

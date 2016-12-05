@@ -5,32 +5,9 @@
 		<fieldset>
 			<h3 class="text-success">Editar Pesquisador</h3>
 			<hr />
-
-			<div class="form-group">
-				<label class="col-md-2 control-label" for="siape">SIAPE</label>
-				<div class="col-md-4">
-					<input id="siape" name="siape" type="text"
-						class="form-control input-md" maxlength="45"
-						value="${pesquisador.siape}"
-						placeholder=" Digite seu
-						SIAPE" required="required"
-						data-error="Por favor, informe seu SIAPE" />
-					<div class="help-block with-errors"></div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-md-2 control-label" for="cpf">CPF</label>
-				<div class="col-md-4">
-					<input id="cpf" name="cpf" type="text"
-						class="form-control input-md" maxlength="11"
-						value="${pesquisador.cpf}"
-						placeholder=" Digite apenas
-						números" required="required"
-						data-error="Por favor, informe seu CPF" />
-					<div class="help-block with-errors"></div>
-				</div>
-			</div>
+			
+			<input type="text" name="cpf" value="${pesquisador.cpf}" hidden="hidden" />
+			<input type="text" name="siape" value="${pesquisador.siape}" hidden="hidden" />				
 
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="nome">Nome</label>
@@ -93,17 +70,16 @@
 						</option>
 					</select>
 				</div>
-			</div>
-
+			</div>			
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="campusId">Informe
+				<label class="col-md-2 control-label" for="campus_id">Informe
 					seu Campus</label>
 				<div class="col-md-4">
-					<select id="campusId" name="campusId" class="form-control">
+					<select id="campus_id" name="campus_id" class="form-control">
 
 						<c:forEach var="campus" items="${listaCampus}" varStatus="id">
 							<option value="${campus.id}" 
-							<c:if test="${ pesquisador.campusId == campus.id }">selected="selected"</c:if>>${campus.nome}</option>
+							<c:if test="${pesquisador.campusId == campus.id}">selected="selected"</c:if>>${campus.nome}</option>
 
 						</c:forEach>
 					</select>
@@ -209,6 +185,5 @@
 			</div>
 		</fieldset>
 	</form>
+	<script src="resources/js/validator.min.js" type="text/javascript"></script>
 </div>
-
-

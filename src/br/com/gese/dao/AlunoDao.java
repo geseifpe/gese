@@ -34,9 +34,7 @@ public class AlunoDao {
 
 	public static void main(String[] args) {
 
-		List<Aluno> lista = getAluno();
-
-		deleteAluno(12);
+		deleteAluno(2);
 		// updateCategorias(8);
 	}
 
@@ -123,7 +121,7 @@ public class AlunoDao {
 
 	public static void deleteAluno(int id) {
 
-		getHttpConnection(url + deleteAluno + id, "DELETE");
+		getHttpConnection(url+deleteAluno+id, "DELETE");
 
 	}
 

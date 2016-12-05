@@ -12,34 +12,26 @@
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
-<SCRIPT type="text/javascript">
-	$(document).ready(
-		    function(){
-		    	$("#perfil").show();
-		    	$("#editar").hide();
-		    	$("#mensagem").hide();
-		    	$("#relatorio").hide();
 
-		    });
-	
-	function exibirinclude(id){
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#perfil").show();
+		$("#editar").hide();
+		$("#mensagem").hide();
+		$("#relatorio").hide();
+
+	});
+
+	function exibirinclude(id) {
 		var e = document.getElementById(id);
-	      
-	
+
 		$("#perfil").hide();
-    	$("#editar").hide();
-    	$("#mensagem").hide();
-    	$("#relatorio").hide();
-		$("#"+id).show();
-		
-	
-	       
+		$("#editar").hide();
+		$("#mensagem").hide();
+		$("#relatorio").hide();
+		$("#" + id).show();
 	}
-	
-	
-	
-	
-	</SCRIPT>
+</script>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1; charset= UTF-8" />
@@ -76,7 +68,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 text-justify">
-					<img src="resources\img\ifpeImagem.png"
+					<img src="resources\img\IFPELogo.png"
 						class="img-responsive img-rounded" alt="Logotipo">
 				</div>
 			</div>
@@ -90,38 +82,34 @@
 					<!-- Menu Principal -->
 
 					<input class="btn btn-default mesmo-tamanho" type="submit"
-						name="opcao" value="Perfil" onclick="exibirinclude('perfil')" /> <input
-						class="btn btn-default mesmo-tamanho" type="button" name="opcao"
-						onclick="exibirinclude('editar')" value="Editar" /> <input
-						class="btn btn-default mesmo-tamanho" type="button" name="opcao"
-						value="Mensagens" onclick="exibirinclude('mensagem')" /> <input
-						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-						value="Relatório Mensal" onclick="exibirinclude('relatorio')" /> <a href="logout"> <input
+						name="opcao" value="Perfil" onclick="exibirinclude('perfil')" />
+					<input class="btn btn-default mesmo-tamanho" type="button"
+						name="opcao" onclick="exibirinclude('editar')" value="Editar" />
+					<input class="btn btn-default mesmo-tamanho" type="button"
+						name="opcao" value="Mensagens" onclick="exibirinclude('mensagem')" />
+					<input class="btn btn-default mesmo-tamanho" type="submit"
+						name="opcao" value="Relatório Mensal"
+						onclick="exibirinclude('relatorio')" /> <a href="logout"> <input
 						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
 						value="Sair" /></a>
 
 				</div>
 
-				<DIV id="perfil">
+				<div id="perfil">
 					<jsp:include page="perfil_aluno.jsp" />
-				</DIV>
+				</div>
 
-				<DIV id="editar">
+				<div id="editar">
 					<jsp:include page="editar_aluno.jsp" />
-				</DIV>
+				</div>
 
-				<DIV id="mensagem">
+				<div id="mensagem">
 					<jsp:include page="menssagem_aluno.jsp" />
-				</DIV>
+				</div>
 
-				<DIV id="relatorio">
+				<div id="relatorio">
 					<jsp:include page="rel_mensal_aluno.jsp" />
-				</DIV>
-
-
-
-
-
+				</div>
 			</div>
 		</div>
 		<hr />
