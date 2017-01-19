@@ -155,9 +155,8 @@ public class CursoDao {
 	}
 	
 	private static Curso converterJsonToObjeto(String json) {  
-		Gson gson = new Gson();
-		
-		Curso curso = gson.fromJson(json, Campus.class);
+		Gson gson = new Gson();		
+		Curso curso = gson.fromJson(json, Curso.class);
 		return curso; 
 	}
 

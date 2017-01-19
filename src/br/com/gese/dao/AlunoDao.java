@@ -167,6 +167,7 @@ public class AlunoDao {
 		HttpURLConnection con = null;
 		String result = null;
 		try {
+			
 			String authString = name + ":" + password;
 			// System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
