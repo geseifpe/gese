@@ -1,12 +1,8 @@
 package br.com.gese.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +20,10 @@ import br.com.gese.model.Pesquisador;
 import br.com.gese.model.Usuario;
 import br.com.gese.util.Criptografia;
 import br.com.gese.util.Mensagem;
+import br.com.gese.util.Upload;
 
 @Controller
-public class ControllerPesquisador {
+public class ControllerPesquisador {	
 	
 	@RequestMapping("/cadastroPesquisador")
 	public String CadastroPesquisador(Model model) {		
@@ -48,8 +45,10 @@ public class ControllerPesquisador {
 		usuario.setAtivo("1");
 		usuario.setPerfil2("1");
 		UsuarioDao.insertUsuario(usuario);
+		
 		model.addAttribute("mensagem", Mensagem.MsgPesquisadorInseridoSucesso);
 		model.addAttribute("url", "cadastroPesquisador");
+		
 		return "mensagemTela";
 	}	
 	
@@ -65,42 +64,11 @@ public class ControllerPesquisador {
 		PesquisadorDao.updatePesquisador(pesquisador);
 		
 		return "telaPesquisador/pesquisador";
-	}
+	}	
 	
 	@RequestMapping(value = "/submeterProjeto", method = RequestMethod.POST)	
-	public String submeterProjeto(@RequestParam("input2[]") MultipartFile[] files) {	
-		
-		final Logger logger = LoggerFactory.getLogger(ControllerPesquisador.class);
-		String message = "";
-		for (int i = 0; i < files.length; i++) {
-			MultipartFile file = files[i];
-			String name = files[i].getOriginalFilename();
-			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = "F:/Eclipse EE/gese_maven/src/main/webapp/resources";
-				File dir = new File(rootPath + File.separator + "arquivos");
-				
-				if (!dir.exists())
-					dir.mkdirs();
-
-				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
-
-				logger.info("Server File Location=" + serverFile.getAbsolutePath());
-
-				message = message + "You successfully uploaded file=" + name + "";
-			} catch (Exception e) {
-				System.out.println("You failed to upload " + name + " => " + e.getMessage());
-				return "error";
-			}			
-		}		
-		
+	public String submeterProjeto(@RequestParam("input2[]") MultipartFile[] files, HttpSession session) {					
+		new Upload().uploadSubmissaoProjeto(files, session);		
 		return "telaPesquisador/pesquisador";
-	}						
-		
+	}		
 }

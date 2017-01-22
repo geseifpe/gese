@@ -31,9 +31,9 @@ public class ControllerLogin {
 	}
 	
 	@RequestMapping("/login")
-	public String tipoPerfil(Model model, Usuario usuario) {
+	public String tipoPerfil(Model model, Usuario usuario, HttpSession session) {
 		
-		String uri = null;		
+		String url = null;		
 
 		try {
 			
@@ -42,38 +42,31 @@ public class ControllerLogin {
 			if(usuarioLogado == null){							
 				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
 				model.addAttribute("display", "");
-				uri = "inicioTela";
-			} else {
+				url = "inicioTela";
+			} else {				
 				
-				model.addAttribute("usuarioLogado", usuarioLogado);
-				
+				session.setAttribute("usuario", usuarioLogado);
 				List<Campus> listaCampus = CampusDao.getCampus();			
-				List<Curso> listaCurso = CursoDao.getCurso();
-				
+				List<Curso> listaCurso = CursoDao.getCurso();				
 				model.addAttribute("listaCampus", listaCampus);
 				model.addAttribute("listaCurso", listaCurso);
 				
-				if(usuarioLogado.getPerfil1().equals("1")) {
-					
+				if(usuarioLogado.getPerfil1().equals("1")) {					
 					Aluno aluno = AlunoDao.getAlunoId(usuarioLogado.getCpf());					
-					model.addAttribute("aluno", aluno);
-					uri = "telaAluno/aluno";
-					
-				} else if (usuarioLogado.getPerfil2().equals("1")) {
-					
-					Pesquisador pesquisador = PesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());								
-					model.addAttribute("pesquisador", pesquisador);
-					uri = "telaPesquisador/pesquisador";
-					
+					session.setAttribute("aluno", aluno);
+					url = "telaAluno/aluno";					
+				} else if (usuarioLogado.getPerfil2().equals("1")) {					
+					Pesquisador pesquisador = PesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
+					session.setAttribute("pesquisador", pesquisador);					
+					url = "telaPesquisador/pesquisador";					
 				} else {
-					uri = "telaAvaliador/avaliador";
+					url = "telaAvaliador/avaliador";
 				}
-			} 
-		
+			}		
 		} catch (Exception e) {
 			return "forward:/";
 		}		
-		return uri;
+		return url;
 	}	
 	
 	@RequestMapping("logout")

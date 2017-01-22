@@ -1,52 +1,53 @@
 package br.com.gese.util;
 
-import java.io.IOException;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-
-import org.springframework.web.bind.annotation.RequestMapping;
+import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
+import br.com.gese.controller.ControllerPesquisador;
+import br.com.gese.model.Pesquisador;
 
 /**
- * Servlet implementation class UploadArquivoServlet
+ * Servlet implementation class SubmeterProjeto
  */
-@WebServlet(name = "fileUploadServlet", urlPatterns = {"/upload"})
-@MultipartConfig(location = "/uploads",
-                 fileSizeThreshold=0,    
-                 maxFileSize=5242880,       // 5 MB
-                 maxRequestSize=20971520)   // 20 MB
-public class Upload extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Upload() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+public class Upload {		
+	
+	public void uploadSubmissaoProjeto(MultipartFile[] files, HttpSession session) {			
+		
+		final Logger logger = LoggerFactory.getLogger(ControllerPesquisador.class);
+		String message = "";			
+		String cpf = ((Pesquisador) session.getAttribute("pesquisador")).getCpf();
+		
+		for (int i = 0; i < files.length; i++) {
+			MultipartFile file = files[i];
+			String name = files[i].getOriginalFilename();
+			
+			try {				
+				
+				byte[] bytes = file.getBytes();
+				
+				File dir = new File(session.getServletContext().getRealPath("/telaPesquisador/uploads/" + cpf));
+				System.out.println("Diretorio existe: " + dir.exists());
+				if (!dir.exists())
+					dir.mkdirs();
+ 
+				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				stream.write(bytes);
+				stream.close();
+
+				logger.info("Server File Location=" + serverFile.getAbsolutePath());
+
+				message = message + "You successfully uploaded file=" + name + "";
+			} catch (Exception e) {
+				System.out.println("You failed to upload " + name + " => " + e.getMessage());		
+			}			
+		}				
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	@RequestMapping("/upload")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub		
-	    
-		doGet(request, response);
-	}
-
 }
+
