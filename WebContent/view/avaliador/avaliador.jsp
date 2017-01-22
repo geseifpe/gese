@@ -76,31 +76,31 @@
 					String opcao = request.getParameter("opcao");
 					if (request.getParameter("opcao") == null) {
 				%>
-				<jsp:include page="perfil_avaliador.jsp" />
+				<jsp:include page="perfilAvaliador.jsp" />
 
 				<%
 					} else {
 						if (opcao.equals("Perfil")) {
 				%>
-				<jsp:include page="perfil_avaliador.jsp" />
+				<jsp:include page="perfilAvaliador.jsp" />
 
 				<%
 					} else if (opcao.equals("Menssagens")) {
 				%>
-				<jsp:include page="menssagem_avaliador.jsp" />
+				<jsp:include page="menssagemAvaliador.jsp" />
 
 				<%
 					} else if (opcao.equals("Avaliar Projeto")) {
 				%>
-				<jsp:include page="avaliar_projeto_avaliador.jsp" />
+				<jsp:include page="avaliarProjetoAvaliador.jsp" />
 				<%
 					} else if (opcao.equals("Avaliar Plano")) {
 				%>
-				<jsp:include page="avaliar_plano_avaliador.jsp" />
+				<jsp:include page="avaliarPlanoAvaliador.jsp" />
 				
 				<%
 					} else if (opcao.equals("Sair")) {
-							opcao = "http://localhost:8080/Projeto_Pibiti_2016/";
+							opcao = "http://localhost:8080/gese/";
 							response.sendRedirect(opcao);
 				%>
 

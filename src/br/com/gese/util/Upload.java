@@ -31,7 +31,7 @@ public class Upload {
 				
 				byte[] bytes = file.getBytes();
 				
-				File dir = new File(session.getServletContext().getRealPath("/telaPesquisador/uploads/" + cpf));
+				File dir = new File(session.getServletContext().getRealPath("/view/pesquisador/uploads/" + cpf));
 				System.out.println("Diretorio existe: " + dir.exists());
 				if (!dir.exists())
 					dir.mkdirs();

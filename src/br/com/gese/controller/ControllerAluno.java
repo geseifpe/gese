@@ -29,7 +29,7 @@ public class ControllerAluno {
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-	    return "telaCadastro/cadastroAlunoTela";
+	    return "aluno/cadastroAlunoTela";
 	}
 	
 	@RequestMapping("/inserirAluno")
@@ -56,7 +56,7 @@ public class ControllerAluno {
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-		return "telaAluno/aluno";
+		return "aluno/aluno";
 	}			
 }
 

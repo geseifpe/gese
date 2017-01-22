@@ -18,7 +18,7 @@
 		$("#perfil").show();
 		$("#editar").hide();
 		$("#mensagem").hide();
-		$("#relatorio").hide();
+		$("#frequencia").hide();
 
 	});
 
@@ -28,7 +28,7 @@
 		$("#perfil").hide();
 		$("#editar").hide();
 		$("#mensagem").hide();
-		$("#relatorio").hide();
+		$("#frequencia").hide();
 		$("#" + id).show();
 	}
 </script>
@@ -89,26 +89,26 @@
 						name="opcao" value="Mensagens" onclick="exibirinclude('mensagem')" />
 					<input class="btn btn-default mesmo-tamanho" type="submit"
 						name="opcao" value="Relatório Mensal"
-						onclick="exibirinclude('relatorio')" /> <a href="logout"> <input
+						onclick="exibirinclude('frequencia')" /> <a href="logout"> <input
 						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
 						value="Sair" /></a>
 
 				</div>
 
 				<div id="perfil">
-					<jsp:include page="perfil_aluno.jsp" />
+					<jsp:include page="perfilAluno.jsp" />
 				</div>
 
 				<div id="editar">
-					<jsp:include page="editar_aluno.jsp" />
+					<jsp:include page="editarAluno.jsp" />
 				</div>
 
 				<div id="mensagem">
-					<jsp:include page="menssagem_aluno.jsp" />
+					<jsp:include page="menssagemAluno.jsp" />
 				</div>
 
-				<div id="relatorio">
-					<jsp:include page="rel_mensal_aluno.jsp" />
+				<div id="frequencia">
+					<jsp:include page="frequenciaMensalAluno.jsp" />
 				</div>
 			</div>
 		</div>

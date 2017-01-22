@@ -66,7 +66,7 @@
 					Programas de Iniciação Científica, Tecnológica e de Incentivo
 					Acadêmico do IFPE</i>
 					<hr />
-				<a class="btn btn-primary btn-lg" href="/gese" style="color: white;">Retornar</a>
+				<a class="btn btn-success btn-lg" href="/gese" style="color: white;">Retornar</a>
 			</div>
 			<div class="col-md-7">
 

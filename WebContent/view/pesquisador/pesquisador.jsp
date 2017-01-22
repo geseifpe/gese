@@ -108,23 +108,23 @@
 				</div>
 
 				<div id="perfil">
-					<jsp:include page="perfil_pesquisador.jsp" />
+					<jsp:include page="perfilPesquisador.jsp" />
 				</div>
 
 				<div id="editar">
-					<jsp:include page="editar_pesquisador.jsp" />
+					<jsp:include page="editarPesquisador.jsp" />
 				</div>
 
 				<div id="mensagem">
-					<jsp:include page="menssagem_pesquisador.jsp" />
+					<jsp:include page="menssagemPesquisador.jsp" />
 				</div>
 
 				<div id="convidar">
-					<jsp:include page="convidar_pesquisador.jsp" />
+					<jsp:include page="convidarPesquisador.jsp" />
 				</div>
 
 				<div id="submeter">
-					<jsp:include page="submeter_projeto_pesquisador.jsp" />
+					<jsp:include page="submeterProjetoPesquisador.jsp" />
 				</div>
 
 			</div>

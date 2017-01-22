@@ -54,13 +54,13 @@ public class ControllerLogin {
 				if(usuarioLogado.getPerfil1().equals("1")) {					
 					Aluno aluno = AlunoDao.getAlunoId(usuarioLogado.getCpf());					
 					session.setAttribute("aluno", aluno);
-					url = "telaAluno/aluno";					
+					url = "aluno/aluno";					
 				} else if (usuarioLogado.getPerfil2().equals("1")) {					
 					Pesquisador pesquisador = PesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
 					session.setAttribute("pesquisador", pesquisador);					
-					url = "telaPesquisador/pesquisador";					
+					url = "pesquisador/pesquisador";					
 				} else {
-					url = "telaAvaliador/avaliador";
+					url = "avaliador/avaliador";
 				}
 			}		
 		} catch (Exception e) {

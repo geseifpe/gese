@@ -34,7 +34,7 @@ public class ControllerPesquisador {
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-	    return "telaCadastro/cadastroPesquisadorTela";
+	    return "pesquisador/cadastroPesquisadorTela";
 	}
 	
 	@RequestMapping("/inserirPesquisador")
@@ -63,12 +63,12 @@ public class ControllerPesquisador {
 		
 		PesquisadorDao.updatePesquisador(pesquisador);
 		
-		return "telaPesquisador/pesquisador";
+		return "pesquisador/pesquisador";
 	}	
 	
 	@RequestMapping(value = "/submeterProjeto", method = RequestMethod.POST)	
 	public String submeterProjeto(@RequestParam("input2[]") MultipartFile[] files, HttpSession session) {					
 		new Upload().uploadSubmissaoProjeto(files, session);		
-		return "telaPesquisador/pesquisador";
+		return "pesquisador/pesquisador";
 	}		
 }
