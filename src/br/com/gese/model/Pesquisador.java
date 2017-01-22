@@ -3,6 +3,7 @@ package br.com.gese.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Pesquisador {
+	
 	@SerializedName("siape")
 	private String siape;
 	

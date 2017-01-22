@@ -35,10 +35,7 @@ public class CampusDao {
 	private static final String password = Url.password;
 
 	public static void main(String[] args) {
-
-
-		deleteCampus(12);
-		//updateCategorias(8);
+		
 	}
 
 	/**
@@ -46,12 +43,11 @@ public class CampusDao {
 	 * @return
 	 */
 	public static List<Campus> getCampus() {
-
 		List<Campus> listaCategoria = null;
+		
 		try {
+			
 			String webPage = url+getCampus;
-
-
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
@@ -83,10 +79,10 @@ public class CampusDao {
 		return listaCategoria;
 	}
 	
-	public static List<Campus>  getCampusId(int id) {
-
+	public static List<Campus> getCampusId(int id) {
 		Campus campus = null;
 		List<Campus> listaCampus = new ArrayList<Campus>();
+		
 		try {
 			String webPage = url+getCampusID+id;
 
@@ -127,16 +123,11 @@ public class CampusDao {
 
 	
 	public static void deleteCampus(int id) {
-
 		getHttpConnection(url+deleteCampus+id, "DELETE");
-
-
 	}
 
 	public static void insertCampus(Campus campus) {
-				POST(url+postCampus, campus);
-
-
+		POST(url+postCampus, campus);
 	}
 
 	public static void updateCategorias(int id) {
@@ -157,21 +148,21 @@ public class CampusDao {
 	}
 	
 	private static Campus converterJsonToObjeto(String json) {  
-		Gson gson = new Gson();
-		
+		Gson gson = new Gson();		
 		Campus Campus = gson.fromJson(json, Campus.class);
 		return Campus; 
 	}
 
 
 	//DELETE
-	public  static HttpURLConnection getHttpConnection(String url, String type){
+	public  static HttpURLConnection getHttpConnection(String url, String type){		
 		URL uri = null;
 		HttpURLConnection con = null;
 		String result = null;
+		
 		try{
-			String authString = name + ":" + password;
-			//System.out.println("auth string: " + authString);
+			
+			String authString = name + ":" + password;			
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
 			String authStringEnc = new String(authEncBytes);
 			uri = new URL(url);
@@ -188,6 +179,7 @@ public class CampusDao {
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String temp = null;
 			StringBuilder sb = new StringBuilder();
+			
 			while((temp = in.readLine()) != null){
 				sb.append(temp).append(" ");
 			}
@@ -197,16 +189,12 @@ public class CampusDao {
 			System.out.println( "connection i/o failed" );
 		}
 
-
 		return con;
 	}
 
 	private static void POST(String uri, Campus categoria){
 
-
 		try {
-
-
 
 			Gson gson = new Gson();
 			String produtoJson = gson.toJson(categoria);
@@ -247,13 +235,6 @@ public class CampusDao {
 		} catch (Exception e) {
 			LOG.log(Level.SEVERE, null, e);
 		}
-
 	}
-
-	
-
-
-
-
 }
 

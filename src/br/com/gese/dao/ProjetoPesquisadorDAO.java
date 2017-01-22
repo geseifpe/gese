@@ -1,65 +1,53 @@
 package br.com.gese.dao;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.google.gson.Gson;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.core.util.Base64;
 
-import br.com.gese.model.Pesquisador;
+import br.com.gese.model.ProjetoPesquisador;
 import br.com.gese.util.Url;
 
-public class PesquisadorDao {
-	private static final Logger LOG = Logger.getLogger(Pesquisador.class.getName());
-	private static final String url = Url.urlPrincipal + Url.pesquisador;
-	private static final String getPesquisador = "queryAll";
-	private static final String getPesquisadorID = "load/";
-	private static final String postPesquisador = "insert/";
-	private static final String updatePesquisador = "update/";
-	private static final String deletePesquisador = "delete/";
+public class ProjetoPesquisadorDAO {
+
+	private static final Logger LOG = Logger.getLogger(ProjetoPesquisador.class.getName());
+	private static final String url = Url.urlPrincipal + Url.projetoPesquisador;
+	private static final String getProjetoPesquisador = "queryAll";
+	private static final String getProjetoPesquisadorID = "load/";
+	private static final String postProjetoPesquisador = "insert/";
+	private static final String updateProjetoPesquisador = "update/";
+	private static final String deleteProjetoPesquisador = "delete/";
 	private static final String name = Url.name;
 	private static final String password = Url.password;
 
 	public static void main(String[] args) {
-		
+
 	}
 
 	/**
-	 * Método que retorna uma lista de Pesquisador
-	 * 
+	 * Método que retorna uma lista de ProjetoPesquisador
 	 * @return
 	 */
-	public static List<Pesquisador> getPesquisador() {
-
-		List<Pesquisador> listaCategoria = null;
+	public static List<ProjetoPesquisador> getProjetoPesquisador() {
+		List<ProjetoPesquisador> listaCategoria = null;
+		
 		try {
-			String webPage = url + getPesquisador;
-
+			
+			String webPage = url+getProjetoPesquisador;
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
@@ -90,14 +78,13 @@ public class PesquisadorDao {
 		}
 		return listaCategoria;
 	}
-
-	public static Pesquisador getPesquisadorId(String id) {
-
-		Pesquisador pesquisador = null;
-
+	
+	public static List<ProjetoPesquisador> getProjetoPesquisadorId(int id) {
+		ProjetoPesquisador projetoPesquisador = null;
+		List<ProjetoPesquisador> listaProjetoPesquisador = new ArrayList<ProjetoPesquisador>();
+		
 		try {
-			String webPage = url + getPesquisadorID + id;
-
+			String webPage = url + getProjetoPesquisadorID + id;
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
@@ -118,105 +105,92 @@ public class PesquisadorDao {
 				sb.append(charArray, 0, numCharsRead);
 			}
 			String result = sb.toString();
-			System.out.println(result);			
-			pesquisador = converterJsonToObjeto(result);
-			System.out.println(pesquisador.getCampusId());
+			System.out.println(result);
+			projetoPesquisador = converterJsonToObjeto(result);
+			listaProjetoPesquisador.add(projetoPesquisador);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-
-		return pesquisador;
+		}	
+		return listaProjetoPesquisador;
 	}
 
-	public static void deletePesquisador(int id) {
-		getHttpConnection(url + deletePesquisador + id, "DELETE");
+	public static void deleteProjetoPesquisador(int id) {
+		getHttpConnection(url+deleteProjetoPesquisador+id, "DELETE");
 	}
 
-	public static void insertPesquisador(Pesquisador pesquisador) {
-		
-		POST(url + postPesquisador, pesquisador);
-		
-	}
-	
-	public static void updatePesquisador(Pesquisador pesquisador) {
-		
-		POST(url + updatePesquisador, pesquisador);
-		
+	public static void insertProjetoPesquisador(ProjetoPesquisador projetoPesquisador) {
+		POST(url+postProjetoPesquisador, projetoPesquisador);
+
 	}
 
 	public static void updateCategorias(int id) {
-		// Pesquisador pesquisador = new Pesquisador();
-		// pesquisador.setId(id);
-		// pesquisador.setNome("Copacabana");
-		// pesquisador.setEstado("RJ");
-		// POST(url + updatePesquisador, pesquisador);
+		ProjetoPesquisador ProjetoPesquisador = new ProjetoPesquisador();
+		ProjetoPesquisador.setPesquisador_siape("1223");
+		ProjetoPesquisador.setAtivo(true);
+		ProjetoPesquisador.setProjeto_id(123456);
+		POST(url+updateProjetoPesquisador, ProjetoPesquisador);
 
 	}
 
-	private static List<Pesquisador> converterJsonToList(String json) {
-		Gson gson = new Gson();
-		Type collectionType = new TypeToken<List<Pesquisador>>() {
-		}.getType();
-		List<Pesquisador> lista = gson.fromJson(json, collectionType);
-		return lista;
-	}
 
-	private static Pesquisador converterJsonToObjeto(String json) {
+	private static List<ProjetoPesquisador> converterJsonToList(String json) {  
 		Gson gson = new Gson();
-		
-		Pesquisador pesquisador = gson.fromJson(json, Pesquisador.class);
-		
-		return pesquisador;
+		Type collectionType = new TypeToken<List<ProjetoPesquisador>>(){}.getType();
+		List<ProjetoPesquisador> lista = gson.fromJson(json, collectionType);
+		return lista; 
 	}
 	
-	// DELETE
-	public static HttpURLConnection getHttpConnection(String url, String type) {
-		
+	private static ProjetoPesquisador converterJsonToObjeto(String json) {  
+		Gson gson = new Gson();		
+		ProjetoPesquisador ProjetoPesquisador = gson.fromJson(json, ProjetoPesquisador.class);
+		return ProjetoPesquisador; 
+	}
+
+
+	//DELETE
+	public  static HttpURLConnection getHttpConnection(String url, String type){
 		URL uri = null;
 		HttpURLConnection con = null;
 		String result = null;
-		
-		try {
+		try{
 			String authString = name + ":" + password;
-			// System.out.println("auth string: " + authString);
+			//System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
 			String authStringEnc = new String(authEncBytes);
 			uri = new URL(url);
 			con = (HttpURLConnection) uri.openConnection();
 			con.setRequestProperty("Content-Type", "application/json");
 			con.setRequestProperty("Authorization", "Basic " + authStringEnc);
-			con.setRequestMethod(type); // type: POST, PUT, DELETE, GET
+			con.setRequestMethod(type); //type: POST, PUT, DELETE, GET
 			con.setDoOutput(true);
 			con.setDoInput(true);
-			con.setConnectTimeout(60000); // 60 secs
-			con.setReadTimeout(60000); // 60 secs
+			con.setConnectTimeout(60000); //60 secs
+			con.setReadTimeout(60000); //60 secs
 			con.setRequestProperty("Content-Type", "application/json");
 			con.connect();
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			String temp = null;
 			StringBuilder sb = new StringBuilder();
-			while ((temp = in.readLine()) != null) {
+			while((temp = in.readLine()) != null){
 				sb.append(temp).append(" ");
 			}
 			result = sb.toString();
 			in.close();
-		} catch (Exception e) {
-			System.out.println("connection i/o failed");
+		}catch(Exception e){
+			System.out.println( "connection i/o failed" );
 		}
+
 
 		return con;
 	}
 
-	private static void POST(String uri, Pesquisador categoria) {
-
-		try {
-
+	private static void POST(String uri, ProjetoPesquisador categoria){
+		try {		
 			Gson gson = new Gson();
 			String produtoJson = gson.toJson(categoria);
-
 			System.out.println("Produto serializado (json):");
 			System.out.println(produtoJson);
 
@@ -255,5 +229,4 @@ public class PesquisadorDao {
 		}
 
 	}
-	
 }

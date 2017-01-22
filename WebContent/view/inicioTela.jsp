@@ -66,7 +66,7 @@
 						Acadêmico do IFPE</i>
 						<div class="col-md-3">
 						<div class="dropdown" style="margin-top: 30px;">
-							<button class="btn btn-primary btn-lg dropdown-toggle"
+							<button class="btn btn-success btn-lg dropdown-toggle"
 								data-toggle="dropdown">
 								Cadastre-se <span></span>
 							</button>

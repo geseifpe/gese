@@ -7,8 +7,9 @@ public class Url {
 	public static final String usuario = "usuario/";
 	public static final String aluno = "aluno/";
 	public static final String pesquisador = "pesquisador/";
-	public static final String curso = "curso/";	
+	public static final String curso = "curso/";
+	public static final String projetoPesquisador = "projetoPesquisador/";
+	public static final String projeto = "projeto/";
 	public static final String name = "admin";
-	public static final String password = "admin";
-
+	public static final String password = "admin";	
 }
