@@ -41,7 +41,7 @@ public class CursoDao {
 	public static void main(String[] args) {
 
 
-		List<Curso>  lista = getCurso();
+		getCurso();
 		
 		//deleteCampus(12);
 		//updateCategorias(8);
@@ -165,7 +165,6 @@ public class CursoDao {
 	public  static HttpURLConnection getHttpConnection(String url, String type){
 		URL uri = null;
 		HttpURLConnection con = null;
-		String result = null;
 		try{
 			String authString = name + ":" + password;
 			//System.out.println("auth string: " + authString);
@@ -188,7 +187,7 @@ public class CursoDao {
 			while((temp = in.readLine()) != null){
 				sb.append(temp).append(" ");
 			}
-			result = sb.toString();
+			sb.toString();
 			in.close();
 		}catch(Exception e){
 			System.out.println( "connection i/o failed" );

@@ -93,7 +93,7 @@
 								<input id="cpf" name="cpf" type="text"
 									class="form-control input-md" maxlength="11"
 									placeholder="Digite apenas números" required="required"
-									data-error="Por favor, informe seu CPF" />
+									data-error="Por favor, informe seu CPF"/>
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>
@@ -102,7 +102,7 @@
 							<label class="col-md-2 control-label" for="campus_id">Selecione
 								o seu Campus</label>
 							<div class="col-md-4">
-								<select id="campusId" name="campusId" class="form-control">
+								<select id="campus_id" name="campus_id" class="form-control">
 
 									<c:forEach var="campus" items="${listaCampus}" varStatus="id">
 										<option value="${campus.id}">${campus.nome}</option>
@@ -112,10 +112,10 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="cursoId">Selecione
+							<label class="col-md-2 control-label" for="curso_id">Selecione
 								o seu Curso</label>
 							<div class="col-md-4">
-								<select id="cursoId" name="cursoId" class="form-control">
+								<select id="curso_id" name="curso_id" class="form-control">
 
 									<c:forEach var="curso" items="${listaCurso}" varStatus="id">
 										<option value="${curso.id}">${curso.nome}</option>																			

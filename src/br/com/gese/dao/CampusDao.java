@@ -158,8 +158,6 @@ public class CampusDao {
 	public  static HttpURLConnection getHttpConnection(String url, String type){		
 		URL uri = null;
 		HttpURLConnection con = null;
-		String result = null;
-		
 		try{
 			
 			String authString = name + ":" + password;			
@@ -183,7 +181,7 @@ public class CampusDao {
 			while((temp = in.readLine()) != null){
 				sb.append(temp).append(" ");
 			}
-			result = sb.toString();
+			sb.toString();
 			in.close();
 		}catch(Exception e){
 			System.out.println( "connection i/o failed" );

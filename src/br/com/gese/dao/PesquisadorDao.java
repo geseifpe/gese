@@ -1,12 +1,10 @@
 package br.com.gese.dao;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -16,18 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.google.gson.Gson;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.core.util.Base64;
 
@@ -120,7 +107,7 @@ public class PesquisadorDao {
 			String result = sb.toString();
 			System.out.println(result);			
 			pesquisador = converterJsonToObjeto(result);
-			System.out.println(pesquisador.getCampusId());
+			System.out.println(pesquisador.getCampus_id());
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -165,10 +152,8 @@ public class PesquisadorDao {
 	}
 
 	private static Pesquisador converterJsonToObjeto(String json) {
-		Gson gson = new Gson();
-		
-		Pesquisador pesquisador = gson.fromJson(json, Pesquisador.class);
-		
+		Gson gson = new Gson();		
+		Pesquisador pesquisador = gson.fromJson(json, Pesquisador.class);		
 		return pesquisador;
 	}
 	
@@ -177,8 +162,6 @@ public class PesquisadorDao {
 		
 		URL uri = null;
 		HttpURLConnection con = null;
-		String result = null;
-		
 		try {
 			String authString = name + ":" + password;
 			// System.out.println("auth string: " + authString);
@@ -201,7 +184,7 @@ public class PesquisadorDao {
 			while ((temp = in.readLine()) != null) {
 				sb.append(temp).append(" ");
 			}
-			result = sb.toString();
+			sb.toString();
 			in.close();
 		} catch (Exception e) {
 			System.out.println("connection i/o failed");

@@ -1,41 +1,68 @@
 package br.com.gese.model;
 
+import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Aluno {
+
+	@NotNull
+	@CPF(message = "CPF inválido")
 	@SerializedName("cpf")
 	private String cpf;
-	
+
+	@NotNull
+	@Size(max = 50)
 	@SerializedName("nome")
 	private String nome;
-	
+
+	@NotNull
+	@Size(max = 20)
 	@SerializedName("matricula")
 	private String matricula;
-	
-	@SerializedName("curso_id")
-	private int cursoId;
-	
+
+	@NotNull
 	@SerializedName("sexo")
 	private char sexo;
-	
+
 	@SerializedName("nascimento")
-	private String nascimento;
-	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate nascimento;
+
+	@Size(max = 11)
 	@SerializedName("campus_id")
-	private int campusId;
-	
+	private int campus_id;
+
+	@Size(max = 11)
+	@SerializedName("curso_id")
+	private int curso_id;
+
+	@NotNull
+	@Size(max = 20)
 	@SerializedName("telefone")
 	private String telefone;
-	
+
+	@Size(max = 20)
 	@SerializedName("celular")
 	private String celular;
-	
+
+	@NotNull
+	@Size(max = 45)
+	@Email
 	@SerializedName("email")
 	private String email;
-	
+
+	@NotNull
+	@Size(max = 200)
 	@SerializedName("linklattes")
 	private String linklattes;
-	
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -43,7 +70,7 @@ public class Aluno {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -51,7 +78,7 @@ public class Aluno {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getMatricula() {
 		return matricula;
 	}
@@ -59,40 +86,20 @@ public class Aluno {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
 	public char getSexo() {
 		return sexo;
 	}
 
-	public void setsexo(char sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
-	public String getNascimento() {
+
+	public LocalDate getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascmimento(String nascimento) {
-		this.nascimento = nascimento;
-	}
-
-	public int getCursoId() {
-		return cursoId;
-	}
-
-	public void setCursoId(int cursoId) {
-		this.cursoId = cursoId;
-	}
-
-	public int getCampusId() {
-		return campusId;
-	}
-
-	public void setCampusId(int campusId) {
-		this.campusId = campusId;
-	}
-
-	public void setNascimento(String nascimento) {
+	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 
@@ -103,7 +110,7 @@ public class Aluno {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public String getCelular() {
 		return celular;
 	}
@@ -111,7 +118,23 @@ public class Aluno {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	
+
+	public int getCampus_id() {
+		return campus_id;
+	}
+
+	public void setCampus_id(int campus_id) {
+		this.campus_id = campus_id;
+	}
+
+	public int getCurso_id() {
+		return curso_id;
+	}
+
+	public void setCurso_id(int curso_id) {
+		this.curso_id = curso_id;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -119,7 +142,7 @@ public class Aluno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getLinklattes() {
 		return linklattes;
 	}
@@ -128,14 +151,10 @@ public class Aluno {
 		this.linklattes = linklattes;
 	}
 
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
-	
-	public String getSexoCompleto(){
-		if(this.sexo == 'M'){
+	public String getSexoCompleto() {
+		if (this.sexo == 'M') {
 			return "Masculino";
-		}else{
+		} else {
 			return "Feminino";
 		}
 	}

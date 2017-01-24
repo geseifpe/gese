@@ -2,7 +2,6 @@ package br.com.gese.model;
 
 public class Usuario {
 	
-	
 	private String cpf;
 	private String perfil1;
 	private String perfil2;

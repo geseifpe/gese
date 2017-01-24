@@ -3,10 +3,14 @@ package br.com.gese.dao;
 import java.util.List;
 import java.util.logging.Level;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.core.util.Base64;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import br.com.gese.model.Aluno;
+import br.com.gese.util.LocalDateDeserializer;
+import br.com.gese.util.LocalDateSerializer;
 import br.com.gese.util.Url;
 
 import java.io.BufferedReader;
@@ -19,7 +23,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDate;
 import java.util.logging.Logger;
+
+import org.apache.tomcat.jni.Local;
 
 public class AlunoDao {
 	private static final Logger LOG = Logger.getLogger(Aluno.class.getName());
@@ -33,9 +40,7 @@ public class AlunoDao {
 	private static final String password = Url.password;
 
 	public static void main(String[] args) {
-
-		deleteAluno(2);
-		// updateCategorias(8);
+		
 	}
 
 	/**
@@ -156,7 +161,6 @@ public class AlunoDao {
 
 	private static Aluno converterJsonToObjeto(String json) {
 		Gson gson = new Gson();
-
 		Aluno Aluno = gson.fromJson(json, Aluno.class);
 		return Aluno;
 	}
@@ -165,7 +169,6 @@ public class AlunoDao {
 	public static HttpURLConnection getHttpConnection(String url, String type) {
 		URL uri = null;
 		HttpURLConnection con = null;
-		String result = null;
 		try {
 			
 			String authString = name + ":" + password;
@@ -189,7 +192,7 @@ public class AlunoDao {
 			while ((temp = in.readLine()) != null) {
 				sb.append(temp).append(" ");
 			}
-			result = sb.toString();
+			sb.toString();
 			in.close();
 		} catch (Exception e) {
 			System.out.println("connection i/o failed");
@@ -198,12 +201,16 @@ public class AlunoDao {
 		return con;
 	}
 
-	private static void POST(String uri, Aluno categoria) {
+	private static void POST(String uri, Aluno aluno) {
 
 		try {
-
-			Gson gson = new Gson();
-			String produtoJson = gson.toJson(categoria);
+			
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());			
+			gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+			
+			Gson gson = gsonBuilder.create();
+			String produtoJson = gson.toJson(aluno);
 
 			System.out.println("Produto serializado (json):");
 			System.out.println(produtoJson);

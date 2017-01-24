@@ -11,9 +11,7 @@
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
 <script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
-
-<script src="resources/bootstrap/js/bootstrap.min.js"
-	type="text/javascript"></script>
+<script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="resources/css/base.css" rel="stylesheet" type="text/css" />
@@ -35,7 +33,7 @@
 						à informação</span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right ">	
 					<li><a href="http://www.brasil.gov.br/barra#participe">Participe</a></li>
 					<li><a href="https://www.servicos.gov.br">Serviços</a></li>
 					<li><a href="http://www4.planalto.gov.br/legislacao">Legislação</a></li>

@@ -26,7 +26,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 			
 		}else{
 			if (request.getSession().getAttribute("usuarioLogado") != null) {
-				Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
+				request.getSession().getAttribute("usuarioLogado");
 				acesso = true;
 			}else{
 				if (!acesso && request.getSession().getAttribute("usuarioLogado") == null && (uri.endsWith("/login") ) ) {

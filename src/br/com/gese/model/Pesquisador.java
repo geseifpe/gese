@@ -1,51 +1,80 @@
 package br.com.gese.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
 import com.google.gson.annotations.SerializedName;
 
 public class Pesquisador {
 	
+	@NotNull
+	@Size(max = 45)
 	@SerializedName("siape")
 	private String siape;
 	
+	@NotNull
+	@CPF
 	@SerializedName("cpf")
 	private String cpf;
 	
+	@NotNull
+	@Size(max = 50)
 	@SerializedName("nome")
 	private String nome;
-	
+		
+	@Size(max = 1)
 	@SerializedName("cargo")
 	private char cargo;
 	
+	@NotNull
+	@Size(max = 1)
 	@SerializedName("titulacao")
 	private char titulacao;
 	
+	@NotNull
+	@Size(max = 1)
 	@SerializedName("sexo")
 	private char sexo;
 	
+	@NotNull
+	@Size(max = 2)
 	@SerializedName("regime")
 	private String regime;
-			
-	@SerializedName("campus_id")
-	private int campusId;
 	
+	@NotNull
+	@Size(max = 11)
+	@SerializedName("campus_id")
+	private int campus_id;
+		
+	@Size(max = 11)
 	@SerializedName("departamento_id")
 	private int departamento_id;
-	
+		
+	@Size(max = 20)
 	@SerializedName("telefone")
 	private String telefone;
 	
+	@NotNull
+	@Size(max = 20)
 	@SerializedName("celular")
 	private String celular;
 	
+	@NotNull
+	@Email
 	@SerializedName("email1")
 	private String email1;
-
+	
+	@Email
 	@SerializedName("email2")
 	private String email2;
-
+	
+	@NotNull
+	@Size(max = 200)
 	@SerializedName("linklattes")
 	private String linklattes;
 	
+	@Size(max = 200)
 	@SerializedName("area_codigo")
 	private String area_codigo;
 	
@@ -122,19 +151,19 @@ public class Pesquisador {
 	}
 	
 	
-	public int getCampusId() {
-		return campusId;
+	public int getCampus_id() {
+		return campus_id;
 	}
 
-	public void setCampusId(int campus_id) {
-		this.campusId = campus_id;
+	public void setCampus_id(int campus_id) {
+		this.campus_id = campus_id;
 	}
 
-	public int getDepartamento() {
+	public int getDepartamento_id() {
 		return departamento_id;
 	}
 	
-	public void setDepartamento(int departamento_id) {
+	public void setDepartamento_id(int departamento_id) {
 		this.departamento_id = departamento_id;		
 	}
 	
@@ -186,9 +215,5 @@ public class Pesquisador {
 	public void setArea_codigo(String area_codigo) {
 		this.area_codigo = area_codigo;
 	}
-	
-	
-	
-	
 }
 
