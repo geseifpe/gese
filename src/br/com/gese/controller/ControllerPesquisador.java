@@ -34,7 +34,7 @@ public class ControllerPesquisador {
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-	    return "pesquisador/cadastroPesquisadorTela";
+	    return "pesquisador/cadastroPesquisador";
 	}
 	
 	@RequestMapping("/inserirPesquisador")

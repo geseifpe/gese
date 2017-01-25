@@ -12,6 +12,7 @@ import junit.framework.TestCase;
 public class TesteLogin extends TestCase {
 
 	
+	@SuppressWarnings("static-access")
 	public void testarLogin(){
 		AlunoDao daoAluno= new AlunoDao();
 		UsuarioDao daoUsuario = new UsuarioDao();

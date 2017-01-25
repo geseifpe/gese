@@ -12,7 +12,7 @@
 <link href="resources/bootstrap/css/fileinput.min.css" media="all"
 	rel="stylesheet" type="text/css" />
 
-<script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>

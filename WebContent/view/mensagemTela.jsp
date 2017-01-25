@@ -11,7 +11,7 @@
 
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
-<script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
 <meta name="viewport"
@@ -169,8 +169,7 @@
 			<div class="row">
 
 				<div class="col-md-3 text-justify">
-					<img src="resources\img\IFPELogo.png"
-						class="img-responsive img-rounded" alt="Logotipo">
+					<img src="resources\img\IFPELogo.png" class="img-responsive img-rounded" alt="Logotipo"/>
 				</div>
 
 			</div>
@@ -203,7 +202,7 @@
 
 							<fieldset>
 							<h3 class="text-success">MENSAGEM</h3>
-								<hr>
+								<hr/>
 								<div class="bs-calltoaction bs-calltoaction-success">
 									<div class="row">
 										<div class="col-md-9 cta-contents">
@@ -224,7 +223,7 @@
 				</div>
 			</div>
 		</div>
-		<hr>
+		<hr/>
 	</div>
 	<footer class="section">
 		<div class="container">

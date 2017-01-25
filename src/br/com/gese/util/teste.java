@@ -15,6 +15,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+@SuppressWarnings("serial")
 public class teste extends HttpServlet {
 	
 	private File diretorio;
@@ -28,6 +29,7 @@ public class teste extends HttpServlet {
 		
 	}
 	
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				

@@ -27,11 +27,11 @@ public class ControllerLogin {
 	@RequestMapping("/")
 	public String inicio(Model model) {
 		model.addAttribute("display", "display:none");
-		return "inicioTela";
+		return "login";
 	}
 	
-	@RequestMapping("/login")
-	public String tipoPerfil(Model model, Usuario usuario, HttpSession session) {
+	@RequestMapping("/loginAccess")
+	public String login(Model model, Usuario usuario, HttpSession session) {
 		
 		String url = null;		
 
@@ -42,7 +42,7 @@ public class ControllerLogin {
 			if(usuarioLogado == null){							
 				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
 				model.addAttribute("display", "");
-				url = "inicioTela";
+				url = "login";
 			} else {				
 				
 				session.setAttribute("usuario", usuarioLogado);

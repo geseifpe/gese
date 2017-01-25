@@ -9,11 +9,12 @@
 <title>${aluno.nome}</title>
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
-<script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
 
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$("#perfil").show();
 		$("#editar").hide();

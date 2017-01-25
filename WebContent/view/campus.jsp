@@ -8,7 +8,7 @@
 <head>
 <link href="view/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
-<script type="text/javascript" src="view/js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="view/js/jquery-3.1.1.js"></script>
 <script src="view/bootstrap/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listar Campus</title>
@@ -17,12 +17,9 @@
 	<table class="table">
 		<thead>
 			<tr class="filters">			
-				<th><input type="text" class="form-control" placeholder="Id"
-					disabled/>
-				<th><input type="text" class="form-control" placeholder="Nome"
-					disabled/></th>
-				<th><input type="text" class="form-control"
-					placeholder="Estado" disabled/></th>
+				<th><input type="text" class="form-control" disabled="disabled"/></th>
+				<th><input type="text" class="form-control" disabled="disabled"/></th>
+				<th><input type="text" class="form-control" disabled="disabled"/></th>
 			</tr>
 		</thead>
 		<tbody>

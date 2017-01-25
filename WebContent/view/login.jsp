@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@page import="org.w3c.dom.Document"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -10,7 +9,7 @@
 
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	media="screen" />
-<script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -77,7 +76,7 @@
 				</div>
 
 				<div class="col-md-5">
-					<form class="form-horizontal" method="post" action="login">
+					<form class="form-horizontal" method="post" action="loginAccess">
 						<h3 class="text-left text-success">Acesso</h3>
 						<hr />
 						<fieldset>

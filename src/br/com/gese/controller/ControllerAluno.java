@@ -34,7 +34,7 @@ public class ControllerAluno {
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-	    return "aluno/cadastroAlunoTela";
+	    return "aluno/cadastroAluno";
 	}
 		
 	@RequestMapping(value = "/inserirAluno", method = RequestMethod.POST)	
@@ -43,12 +43,14 @@ public class ControllerAluno {
 				
 		aluno.setNascimento(nascimento);		
 		AlunoDao.insertAluno(aluno);
+		
 		usuario.setPassword(Criptografia.md5(usuario.getPassword()));
 		usuario.setAtivo("1");
 		usuario.setPerfil1("1");	
 		UsuarioDao.insertUsuario(usuario);
+		
 		model.addAttribute("mensagem", Mensagem.MsgAlunoInseridoSucesso);
-		model.addAttribute("url", "cadastroAluno");
+		model.addAttribute("url", "/");
 		return "mensagemTela";
 	}
 	

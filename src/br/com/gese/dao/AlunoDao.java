@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.core.util.Base64;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import br.com.gese.model.Aluno;
 import br.com.gese.util.LocalDateDeserializer;
@@ -25,8 +24,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
 import java.util.logging.Logger;
-
-import org.apache.tomcat.jni.Local;
 
 public class AlunoDao {
 	private static final Logger LOG = Logger.getLogger(Aluno.class.getName());

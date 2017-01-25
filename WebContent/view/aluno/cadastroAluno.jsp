@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@page import="org.w3c.dom.Document"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,7 +13,7 @@
 <link href="resources/css/base.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="resources/js/jquery-2.2.1.min.js" type="text/javascript"></script>
+<script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
