@@ -47,7 +47,7 @@ public class ControllerPesquisador {
 		UsuarioDao.insertUsuario(usuario);
 		
 		model.addAttribute("mensagem", Mensagem.MsgPesquisadorInseridoSucesso);
-		model.addAttribute("url", "cadastroPesquisador");
+		model.addAttribute("url", "login");
 		
 		return "mensagemTela";
 	}	

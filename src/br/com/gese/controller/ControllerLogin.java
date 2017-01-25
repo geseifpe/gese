@@ -30,6 +30,12 @@ public class ControllerLogin {
 		return "login";
 	}
 	
+	@RequestMapping("login")
+	public String login(Model model) {
+		model.addAttribute("display", "display:none");
+		return "login";
+	}
+	
 	@RequestMapping("/loginAccess")
 	public String login(Model model, Usuario usuario, HttpSession session) {
 		

@@ -193,12 +193,12 @@ public class PesquisadorDao {
 		return con;
 	}
 
-	private static void POST(String uri, Pesquisador categoria) {
+	private static void POST(String uri, Pesquisador pesquisador) {
 
 		try {
 
 			Gson gson = new Gson();
-			String produtoJson = gson.toJson(categoria);
+			String produtoJson = gson.toJson(pesquisador);
 
 			System.out.println("Produto serializado (json):");
 			System.out.println(produtoJson);

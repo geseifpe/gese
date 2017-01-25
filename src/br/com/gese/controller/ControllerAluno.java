@@ -50,7 +50,7 @@ public class ControllerAluno {
 		UsuarioDao.insertUsuario(usuario);
 		
 		model.addAttribute("mensagem", Mensagem.MsgAlunoInseridoSucesso);
-		model.addAttribute("url", "/");
+		model.addAttribute("url", "login");
 		return "mensagemTela";
 	}
 	
