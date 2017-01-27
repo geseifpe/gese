@@ -26,11 +26,11 @@ import br.com.gese.util.Url;
 public class ServiceDao implements IDao{
 	
 	private static final String urlPrincipal = Url.urlPrincipal;
-	private static final String getentidade = "queryAll";
-	private static final String getentidadeID = "load/";
-	private static final String insertentidade = "insert/";
-	private static final String updateentidade = "update/";
-	private static final String deleteentidade = "delete/";
+	private static final String getEntidade = "queryAll";
+	private static final String getEntidadeID = "load/";
+	private static final String insertEntidade = "insert/";
+	private static final String updateEntidade = "update/";
+	private static final String deleteEntidade = "delete/";
 	private static final String name = Url.name;
 	private static final String password = Url.password;
 
@@ -39,7 +39,7 @@ public class ServiceDao implements IDao{
 		List<T> listaDeentidades = null;
 
 		try {
-			String webPage = urlPrincipal + urlEntidade + getentidade;
+			String webPage = urlPrincipal + urlEntidade + getEntidade;
 
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
@@ -78,7 +78,7 @@ public class ServiceDao implements IDao{
 		T entidadeObjeto = null;
 
 		try {
-			String webPage = urlPrincipal + urlEntidade + getentidadeID + id;
+			String webPage = urlPrincipal + urlEntidade + getEntidadeID + id;
 
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
@@ -115,15 +115,15 @@ public class ServiceDao implements IDao{
 	}
 
 	public void deleteEntidade(String urlEntidade, int id) {
-		getHttpConnection(urlPrincipal + urlEntidade + deleteentidade + id, "DELETE");
+		getHttpConnection(urlPrincipal + urlEntidade + deleteEntidade + id, "DELETE");
 	}
 
 	public <T> void insertEntidade(String urlEntidade, T entidade) {
-		POST(urlPrincipal + urlEntidade + insertentidade, entidade);
+		POST(urlPrincipal + urlEntidade + insertEntidade, entidade);
 	}
 
 	public <T> void updateEntidade(String urlEntidade, T entidade) {
-		POST(urlPrincipal + urlEntidade + updateentidade, entidade);
+		POST(urlPrincipal + urlEntidade + updateEntidade, entidade);
 	}
 
 	public void updateentidade(int id) {
