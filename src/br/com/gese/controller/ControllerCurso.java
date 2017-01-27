@@ -11,20 +11,24 @@ import br.com.gese.model.Curso;
 
 @Controller
 public class ControllerCurso {
-	
+
 	@RequestMapping("/listarCurso")
 	public String listarCampus(Model model) {
-		
-		List<Curso> listaCurso = CursoDao.getCurso();
+
+		CursoDao cursoDao = new CursoDao();
+		List<Curso> listaCurso = cursoDao.getCursos();
+
 		model.addAttribute("listaCurso", listaCurso);
-	    return "curso";
+		return "curso";
 	}
-	
+
 	@RequestMapping("/inserirCurso")
 	public String inserirCampus(Model model, Curso curso) {
 		
-		CursoDao.insertCurso(curso);
+		CursoDao cursoDao = new CursoDao();
+		cursoDao.insertCurso(curso);
+
 		model.addAttribute("mensagem", "Curso inserido com sucesso");
-	    return "forward:listarCurso";
+		return "forward:listarCurso";
 	}
 }

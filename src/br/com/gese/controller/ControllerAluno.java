@@ -27,45 +27,55 @@ public class ControllerAluno {
 
 	@RequestMapping("/cadastroAluno")
 	public String CadastrarAluno(Model model) {
-	
-		List<Campus> listaCampus = CampusDao.getCampus();			
-		List<Curso> listaCurso = CursoDao.getCurso();
-		
+
+		CampusDao campusDao = new CampusDao();
+		List<Campus> listaCampus = campusDao.getCampus();
+
+		CursoDao cursoDao = new CursoDao();
+		List<Curso> listaCurso = cursoDao.getCursos();
+
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
-		
-	    return "aluno/cadastroAluno";
+
+		return "aluno/cadastroAluno";
 	}
-		
-	@RequestMapping(value = "/inserirAluno", method = RequestMethod.POST)	
+
+	@RequestMapping(value = "/inserirAluno", method = RequestMethod.POST)
 	public String inserirAluno(Model model, Aluno aluno, Usuario usuario,
-			@RequestParam("nascimento") @DateTimeFormat(iso = ISO.DATE) LocalDate nascimento) {		
-				
-		aluno.setNascimento(nascimento);		
-		AlunoDao.insertAluno(aluno);
-		
+			@RequestParam("nascimento") @DateTimeFormat(iso = ISO.DATE) LocalDate nascimento) {
+
+		aluno.setNascimento(nascimento);
+
+		AlunoDao alunoDao = new AlunoDao();
+		alunoDao.insertAluno(aluno);
+
 		usuario.setPassword(Criptografia.md5(usuario.getPassword()));
 		usuario.setAtivo("1");
-		usuario.setPerfil1("1");	
-		UsuarioDao.insertUsuario(usuario);
-		
+		usuario.setPerfil1("1");
+
+		UsuarioDao usuarioDao = new UsuarioDao();
+		usuarioDao.insertUsuario(usuario);
+
 		model.addAttribute("mensagem", Mensagem.MsgAlunoInseridoSucesso);
 		model.addAttribute("url", "login");
 		return "mensagemTela";
 	}
-	
+
 	@RequestMapping("/updateAluno")
-	public String updateAluno(Model model, Aluno aluno) {		
-		
-		AlunoDao.updateAluno(aluno);
-		
-		List<Campus> listaCampus = CampusDao.getCampus();			
-		List<Curso> listaCurso = CursoDao.getCurso();
-		
+	public String updateAluno(Model model, Aluno aluno) {
+
+		AlunoDao alunoDao = new AlunoDao();
+		alunoDao.updateAluno(aluno);
+
+		CampusDao campusDao = new CampusDao();
+		List<Campus> listaCampus = campusDao.getCampus();
+
+		CursoDao cursoDao = new CursoDao();
+		List<Curso> listaCurso = cursoDao.getCursos();
+
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
-		
-		return "aluno/aluno";
-	}			
-}
 
+		return "aluno/aluno";
+	}
+}

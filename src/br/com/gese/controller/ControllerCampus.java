@@ -15,7 +15,9 @@ public class ControllerCampus {
 	@RequestMapping("/listarCampus")
 	public String listarCampus(Model model) {
 		
-		List<Campus> listaCampus = CampusDao.getCampus();
+		CampusDao campusDao = new CampusDao();		
+		List<Campus> listaCampus = campusDao.getCampus();
+		
 		model.addAttribute("listaCampus", listaCampus);
 	    return "campus";
 	}
@@ -23,7 +25,9 @@ public class ControllerCampus {
 	@RequestMapping("/inserirCampus")
 	public String inserirCampus(Model model, Campus campus) {
 		
-		CampusDao.insertCampus(campus);
+		CampusDao campusDao = new CampusDao();				
+		campusDao.insertCampus(campus);
+		
 		model.addAttribute("mensagem", "Campus inserido com sucesso");
 	    return "forward:listarCampus";
 	}

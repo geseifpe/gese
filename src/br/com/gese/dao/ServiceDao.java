@@ -5,48 +5,42 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.GsonBuilder;
 import com.sun.jersey.core.util.Base64;
 
-import br.com.gese.model.Projeto;
+import br.com.gese.util.JsonConverter;
+import br.com.gese.util.LocalDateDeserializer;
+import br.com.gese.util.LocalDateSerializer;
 import br.com.gese.util.Url;
 
-public class ProjetoDAO {
-	private static final Logger LOG = Logger.getLogger(Projeto.class.getName());
-	private static final String url = Url.urlPrincipal + Url.projeto;
-	private static final String getProjeto = "queryAll";
-	private static final String getProjetoID = "load/";
-	private static final String postProjeto = "insert/";
-	private static final String updateProjeto = "update/";
-	private static final String deleteProjeto = "delete/";
+public class ServiceDao implements IDao{
+	
+	private static final String urlPrincipal = Url.urlPrincipal;
+	private static final String getentidade = "queryAll";
+	private static final String getentidadeID = "load/";
+	private static final String insertentidade = "insert/";
+	private static final String updateentidade = "update/";
+	private static final String deleteentidade = "delete/";
 	private static final String name = Url.name;
 	private static final String password = Url.password;
 
-	public static void main(String[] args) {
+	public <T> List<T> getEntidade(String urlEntidade) {
 
-	}
+		List<T> listaDeentidades = null;
 
-	/**
-	 * Método que retorna uma lista de Projeto
-	 * @return
-	 */
-	public static List<Projeto> getProjeto() {
-		List<Projeto> listaCategoria = null;
-		
 		try {
-			
-			String webPage = url+getProjeto;
+			String webPage = urlPrincipal + urlEntidade + getentidade;
+
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
@@ -68,22 +62,24 @@ public class ProjetoDAO {
 			}
 			String result = sb.toString();
 			System.out.println(result);
-			listaCategoria = converterJsonToList(result);
+			listaDeentidades =  new JsonConverter().converterJsonParaList(result);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return listaCategoria;
+		return listaDeentidades;
 	}
-	
-	public static List<Projeto> getProjetoId(int id) {
-		Projeto Projeto = null;
-		List<Projeto> listaProjeto = new ArrayList<Projeto>();
-		
+
+	@SuppressWarnings("unchecked")
+	public <T> T getEntidadeId(String urlEntidade, String id, Class<T> entidade) {
+
+		T entidadeObjeto = null;
+
 		try {
-			String webPage = url + getProjetoID + id;
+			String webPage = urlPrincipal + urlEntidade + getentidadeID + id;
+
 			String authString = name + ":" + password;
 			System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
@@ -103,88 +99,85 @@ public class ProjetoDAO {
 			while ((numCharsRead = isr.read(charArray)) > 0) {
 				sb.append(charArray, 0, numCharsRead);
 			}
+			
 			String result = sb.toString();
-			System.out.println(result);
-			Projeto = converterJsonToObjeto(result);
-			listaProjeto.add(Projeto);
+			System.out.println(result);			
+			
+			entidadeObjeto = (T) new JsonConverter().converterJsonParaObjeto(result, (Class<T>)entidadeObjeto); //suppress warning
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	
-		return listaProjeto;
+		}
+
+		return entidadeObjeto;
 	}
 
-	public static void deleteProjeto(int id) {
-		getHttpConnection(url+deleteProjeto+id, "DELETE");
+	public void deleteEntidade(String urlEntidade, int id) {
+		getHttpConnection(urlPrincipal + urlEntidade + deleteentidade + id, "DELETE");
 	}
 
-	public static void insertProjeto(Projeto Projeto) {
-		POST(url+postProjeto, Projeto);
-
+	public <T> void insertEntidade(String urlEntidade, T entidade) {
+		POST(urlPrincipal + urlEntidade + insertentidade, entidade);
 	}
 
-	public static void updateCategorias(int id) {
-		Projeto projeto = new Projeto();
-		projeto.setNota(10);
-		projeto.setTitulo("Projeto teste");		
-		POST(url+updateProjeto, projeto);
+	public <T> void updateEntidade(String urlEntidade, T entidade) {
+		POST(urlPrincipal + urlEntidade + updateentidade, entidade);
 	}
 
-
-	private static List<Projeto> converterJsonToList(String json) {  
-		Gson gson = new Gson();
-		Type collectionType = new TypeToken<List<Projeto>>(){}.getType();
-		List<Projeto> lista = gson.fromJson(json, collectionType);
-		return lista; 
-	}
-	
-	private static Projeto converterJsonToObjeto(String json) {  
-		Gson gson = new Gson();		
-		Projeto Projeto = gson.fromJson(json, Projeto.class);
-		return Projeto; 
+	public void updateentidade(int id) {
 	}
 
+	public HttpURLConnection getHttpConnection(String url, String type) {
+		
+		URL urlObject = null;
+		HttpURLConnection connection = null;
+		
+		try {
 
-	//DELETE
-	public  static HttpURLConnection getHttpConnection(String url, String type){
-		URL uri = null;
-		HttpURLConnection con = null;
-		try{
 			String authString = name + ":" + password;
-			//System.out.println("auth string: " + authString);
 			byte[] authEncBytes = Base64.encode(authString.getBytes());
 			String authStringEnc = new String(authEncBytes);
-			uri = new URL(url);
-			con = (HttpURLConnection) uri.openConnection();
-			con.setRequestProperty("Content-Type", "application/json");
-			con.setRequestProperty("Authorization", "Basic " + authStringEnc);
-			con.setRequestMethod(type); //type: POST, PUT, DELETE, GET
-			con.setDoOutput(true);
-			con.setDoInput(true);
-			con.setConnectTimeout(60000); //60 secs
-			con.setReadTimeout(60000); //60 secs
-			con.setRequestProperty("Content-Type", "application/json");
-			con.connect();
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			urlObject = new URL(urlPrincipal + url);
+			connection = (HttpURLConnection) urlObject.openConnection();
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.setRequestProperty("Authorization", "Basic " + authStringEnc);
+			connection.setRequestMethod(type); // type: POST, PUT, DELETE, GET
+			connection.setDoOutput(true);
+			connection.setDoInput(true);
+			connection.setConnectTimeout(60000); // 60 secs
+			connection.setReadTimeout(60000); // 60 secs
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.connect();
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String temp = null;
 			StringBuilder sb = new StringBuilder();
-			while((temp = in.readLine()) != null){
+			while ((temp = in.readLine()) != null) {
 				sb.append(temp).append(" ");
 			}
 			sb.toString();
 			in.close();
-		}catch(Exception e){
-			System.out.println( "connection i/o failed" );
+		} catch (Exception e) {
+			System.out.println("connection i/o failed");
 		}
-		return con;
+
+		return connection;
 	}
 
-	private static void POST(String uri, Projeto categoria){
-		try {		
-			Gson gson = new Gson();
-			String produtoJson = gson.toJson(categoria);
+	public <T> void POST(String url, T entidade) {
+
+		Logger LOG = Logger.getLogger(entidade.getClass().getName());
+
+		try {
+
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
+			gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
+
+			Gson gson = gsonBuilder.create();
+			String produtoJson = gson.toJson(entidade);
+
 			System.out.println("Produto serializado (json):");
 			System.out.println(produtoJson);
 
@@ -192,8 +185,8 @@ public class ProjetoDAO {
 				String authString = name + ":" + password;
 				byte[] authEncBytes = Base64.encode(authString.getBytes());
 				String authStringEnc = new String(authEncBytes);
-				URL url = new URL(uri);
-				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				URL urlObject = new URL(url);
+				HttpURLConnection connection = (HttpURLConnection) urlObject.openConnection();
 				connection.setDoOutput(true);
 				connection.setRequestProperty("Content-Type", "application/json");
 				connection.setRequestProperty("Authorization", "Basic " + authStringEnc);
@@ -221,6 +214,5 @@ public class ProjetoDAO {
 		} catch (Exception e) {
 			LOG.log(Level.SEVERE, null, e);
 		}
-
 	}
 }

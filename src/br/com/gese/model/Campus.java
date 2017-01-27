@@ -35,9 +35,5 @@ public class Campus {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	
-	
-	
+	}	
 }

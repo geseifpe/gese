@@ -28,8 +28,11 @@ public class ControllerPesquisador {
 	@RequestMapping("/cadastroPesquisador")
 	public String CadastroPesquisador(Model model) {		
 		
-		List<Campus> listaCampus = CampusDao.getCampus();			
-		List<Curso> listaCurso = CursoDao.getCurso();
+		CampusDao campusDao = new CampusDao();		
+		List<Campus> listaCampus = campusDao.getCampus();
+		
+		CursoDao cursoDao = new CursoDao();		
+		List<Curso> listaCurso = cursoDao.getCursos();
 		
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
@@ -39,12 +42,16 @@ public class ControllerPesquisador {
 	
 	@RequestMapping("/inserirPesquisador")
 	public String inserirPesquisador(Model model, Pesquisador pesquisador, Usuario usuario) {
-						
-		PesquisadorDao.insertPesquisador(pesquisador);
+		
+		PesquisadorDao pesquisadorDao = new PesquisadorDao();		
+		pesquisadorDao.insertPesquisador(pesquisador);
+		
 		usuario.setPassword(Criptografia.md5(usuario.getPassword()));
 		usuario.setAtivo("1");
 		usuario.setPerfil2("1");
-		UsuarioDao.insertUsuario(usuario);
+		
+		UsuarioDao usuarioDao = new UsuarioDao();		
+		usuarioDao.insertUsuario(usuario);
 		
 		model.addAttribute("mensagem", Mensagem.MsgPesquisadorInseridoSucesso);
 		model.addAttribute("url", "login");
@@ -55,13 +62,17 @@ public class ControllerPesquisador {
 	@RequestMapping("/updatePesquisador")
 	public String updatePesquisador(Model model, Pesquisador pesquisador) {			
 						
-		List<Campus> listaCampus = CampusDao.getCampus();			
-		List<Curso> listaCurso = CursoDao.getCurso();
+		CampusDao campusDao = new CampusDao();		
+		List<Campus> listaCampus = campusDao.getCampus();
+		
+		CursoDao cursoDao = new CursoDao();		
+		List<Curso> listaCurso = cursoDao.getCursos();
 		
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-		PesquisadorDao.updatePesquisador(pesquisador);
+		PesquisadorDao pesquisadorDao = new PesquisadorDao();
+		pesquisadorDao.updatePesquisador(pesquisador);
 		
 		return "pesquisador/pesquisador";
 	}	

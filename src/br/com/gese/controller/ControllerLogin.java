@@ -42,8 +42,8 @@ public class ControllerLogin {
 		String url = null;		
 
 		try {
-			
-			Usuario usuarioLogado = UsuarioDao.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
+			UsuarioDao usuarioDao = new UsuarioDao();
+			Usuario usuarioLogado = usuarioDao.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
 			
 			if(usuarioLogado == null){							
 				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
@@ -52,17 +52,24 @@ public class ControllerLogin {
 			} else {				
 				
 				session.setAttribute("usuario", usuarioLogado);
-				List<Campus> listaCampus = CampusDao.getCampus();			
-				List<Curso> listaCurso = CursoDao.getCurso();				
+				
+				CampusDao campusDao = new CampusDao();		
+				List<Campus> listaCampus = campusDao.getCampus();
+				
+				CursoDao cursoDao = new CursoDao();		
+				List<Curso> listaCurso = cursoDao.getCursos();
+				
 				model.addAttribute("listaCampus", listaCampus);
 				model.addAttribute("listaCurso", listaCurso);
 				
 				if(usuarioLogado.getPerfil1().equals("1")) {					
-					Aluno aluno = AlunoDao.getAlunoId(usuarioLogado.getCpf());					
+					AlunoDao alunoDao = new AlunoDao();
+					Aluno aluno = alunoDao.getAlunoId(usuarioLogado.getCpf());					
 					session.setAttribute("aluno", aluno);
 					url = "aluno/aluno";					
-				} else if (usuarioLogado.getPerfil2().equals("1")) {					
-					Pesquisador pesquisador = PesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
+				} else if (usuarioLogado.getPerfil2().equals("1")) {
+					PesquisadorDao pesquisadorDao = new PesquisadorDao();
+					Pesquisador pesquisador = pesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
 					session.setAttribute("pesquisador", pesquisador);					
 					url = "pesquisador/pesquisador";					
 				} else {
