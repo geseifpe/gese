@@ -9,7 +9,7 @@ public class AlunoDao extends ServiceDao {
 	private static final String urlAluno = Url.aluno;
 
 	public List<Aluno> getAlunos() {
-		return getEntidade(urlAluno);
+		return getEntidades(urlAluno);
 	}
 
 	public Aluno getAlunoId(String id) {

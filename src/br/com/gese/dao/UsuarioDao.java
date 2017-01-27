@@ -22,7 +22,7 @@ public class UsuarioDao extends ServiceDao {
 	private static final String password = Url.password;
 
 	public List<Usuario> getUsuarios() {
-		return getEntidade(urlUsuario);
+		return getEntidades(urlUsuario);
 	}
 
 	public Usuario getUsuarioId(String id) {

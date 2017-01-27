@@ -9,7 +9,7 @@ public class CampusDao extends ServiceDao {
 	private static final String urlCampus = Url.campus;
 
 	public List<Campus> getCampus() {
-		return getEntidade(urlCampus);
+		return getEntidades(urlCampus);
 	}
 
 	public Campus getCampusId(String id) {

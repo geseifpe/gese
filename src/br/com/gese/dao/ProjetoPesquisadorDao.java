@@ -10,7 +10,7 @@ public class ProjetoPesquisadorDao extends ServiceDao {
 	private static final String urlProjetoPesquisador = Url.projetoPesquisador;
 
 	public List<ProjetoPesquisador> getProjetosPesquisador() {
-		return getEntidade(urlProjetoPesquisador);
+		return getEntidades(urlProjetoPesquisador);
 	}
 
 	public ProjetoPesquisador getProjetoPesquisadorId(String id) {

@@ -34,7 +34,7 @@ public class ServiceDao implements IDao{
 	private static final String name = Url.name;
 	private static final String password = Url.password;
 
-	public <T> List<T> getEntidade(String urlEntidade) {
+	public <T> List<T> getEntidades(String urlEntidade) {
 
 		List<T> listaDeentidades = null;
 

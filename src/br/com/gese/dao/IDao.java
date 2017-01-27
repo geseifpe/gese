@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IDao {
 	
-	public <T> List<T> getEntidade(String urlEntidade);
+	public <T> List<T> getEntidades(String urlEntidade);
 	public <T> T getEntidadeId(String urlEntidade, String id, Class<T> entidade);
 	public void deleteEntidade(String urlEntidade, int id);
 	public <T> void insertEntidade(String urlEntidade, T entidade);
