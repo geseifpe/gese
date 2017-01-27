@@ -36,7 +36,7 @@ public class ServiceDao implements IDao{
 
 	public <T> List<T> getEntidades(String urlEntidade) {
 
-		List<T> listaDeentidades = null;
+		List<T> listaDeEntidades = null;
 
 		try {
 			String webPage = urlPrincipal + urlEntidade + getEntidade;
@@ -62,14 +62,14 @@ public class ServiceDao implements IDao{
 			}
 			String result = sb.toString();
 			System.out.println(result);
-			listaDeentidades =  new JsonConverter().converterJsonParaList(result);
+			listaDeEntidades =  new JsonConverter().converterJsonParaList(result);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return listaDeentidades;
+		return listaDeEntidades;
 	}
 
 	@SuppressWarnings("unchecked")
