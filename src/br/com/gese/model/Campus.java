@@ -8,7 +8,7 @@ public class Campus {
 	private int id;
 	
 	@SerializedName("campus")
-	private String nome;
+	private String campus;
 	
 	@SerializedName("estado")
 	private String estado;
@@ -21,12 +21,12 @@ public class Campus {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getCampus() {
+		return campus;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setCampus(String nome) {
+		this.campus = nome;
 	}
 
 	public String getEstado() {

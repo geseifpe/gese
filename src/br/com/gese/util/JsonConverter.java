@@ -10,9 +10,9 @@ public class JsonConverter {
 	
 	public <T> List<T> converterJsonParaList(String json) {
 		Gson gson = new Gson();
-		Type collectionType = new TypeToken<List<T>>() {
+		Type tipo = new TypeToken<List<T>>() {
 		}.getType();
-		List<T> lista = gson.fromJson(json, collectionType);
+		List<T> lista = gson.fromJson(json, tipo);
 		return lista;
 	}
 

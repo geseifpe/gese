@@ -1,8 +1,13 @@
 package br.com.gese.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Curso {
 	
+	@SerializedName("id")
 	private int id;
+	
+	@SerializedName("nome")
 	private String nome;
 	
 	public int getId() {
