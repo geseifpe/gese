@@ -12,14 +12,7 @@ import junit.framework.TestCase;
 public class TesteLogin extends TestCase {
 
 	
-	public void testarLogin(){
-		AlunoDao daoAluno= new AlunoDao();
-		UsuarioDao daoUsuario = new UsuarioDao();
-		Aluno aluno = daoAluno.getAlunoId("03107383422");
-        Usuario usuario = daoUsuario.login(aluno.getCpf(), Criptografia.md5("123456"));
-		Assert.assertNotEquals(usuario,null);
-	}
-	
+		
 	public void testar1(){
 		Assert.assertEquals(2,2);
 	}
