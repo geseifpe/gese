@@ -38,7 +38,7 @@ public class teste extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		
 		if (!isMultipart) {
-			out.println("<h1>Voce não enviou um arquivo!</h1>");
+			out.println("<h1>Voce nao enviou um arquivo!</h1>");
 			return;
 		}
 		
@@ -59,7 +59,7 @@ public class teste extends HttpServlet {
 			        processUploadedFile(item);
 			        System.out.println(item);
 			    } else {
-			    	//para inputs que nao sao 'file', isFormField() é verdadeiro 
+			    	//para inputs que nao sao 'file', isFormField()  verdadeiro 
 			    	String nomeDoCampo = item.getFieldName();
 				String valorDoCampo = item.getString();
 				System.out.println(nomeDoCampo + ": " + valorDoCampo);
