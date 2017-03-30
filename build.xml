@@ -28,18 +28,7 @@
 	</target>
 	
 	<target name="unit">
-		<junit printsummary="yes"  haltonfailure="yes">
-			<classpath>
-			            <pathelement location="build/classes" />
-			            <pathelement location="WebContent/WEB-INF/lib" />
-			        </classpath>
-			<test name="br.com.gese.testes.TesteLogin" haltonfailure="no" outfile="result">
-			
-			   <formatter type="plain" usefile="false"/>
-				<formatter type="xml"/>
-			  </test>
-			
-		</junit>
+	
 		<mkdir dir="./reports" />
 		<junitreport todir="reports">
 			
