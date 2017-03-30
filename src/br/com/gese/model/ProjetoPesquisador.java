@@ -15,8 +15,8 @@ public class ProjetoPesquisador {
 	@SerializedName("ehcoordenador")
 	private String ehcoordenador;
 	
-	@SerializedName("data_inscriçao")
-	private Date data_inscriçao;
+	@SerializedName("data_inscricao")
+	private Date data_inscricao;
 	
 	@SerializedName("ativo")
 	private boolean ativo;
@@ -48,12 +48,12 @@ public class ProjetoPesquisador {
 		this.ehcoordenador = ehcoordenador;
 	}
 
-	public Date getData_inscriçao() {
-		return data_inscriçao;
+	public Date getData_inscricao() {
+		return data_inscricao;
 	}
 
-	public void setData_inscriçao(Date data_inscriçao) {
-		this.data_inscriçao = data_inscriçao;
+	public void setData_inscricao(Date data_inscricao) {
+		this.data_inscricao = data_inscricao;
 	}
 
 	public boolean isAtivo() {
