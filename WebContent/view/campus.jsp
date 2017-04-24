@@ -27,7 +27,7 @@
 
 				<tr>
 					<td>${campus.id}</td>
-					<td>${campus.nome}</td>
+					<td>${campus.cidade}</td>
 					<td>${campus.estado}</td>
 				</tr>
 			</c:forEach>

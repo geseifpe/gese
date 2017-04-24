@@ -29,47 +29,41 @@ public class ControllerLogin {
 		model.addAttribute("display", "display:none");
 		return "login";
 	}
-	
+
 	@RequestMapping("login")
-	public String login(Model model) {
-		model.addAttribute("display", "display:none");
-		return "login";
-	}
-	
-	@RequestMapping("/loginAccess")
 	public String login(Model model, Usuario usuario, HttpSession session) {
 		
-		String url = null;		
+		String url = null;
 
 		try {
-			UsuarioDao usuarioDao = new UsuarioDao();
-			Usuario usuarioLogado = usuarioDao.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
+			final UsuarioDao usuarioDao = new UsuarioDao();
+			final Usuario usuarioLogado = usuarioDao.login(usuario.getCpf(), Criptografia.md5(usuario.getPassword()));
 			
 			if(usuarioLogado == null){							
 				model.addAttribute("mensagem", Mensagem.MsgLoginIncorreto);
 				model.addAttribute("display", "");
-				url = "login";
+				url =  "forward:/";
 			} else {				
 				
 				session.setAttribute("usuario", usuarioLogado);
 				
-				CampusDao campusDao = new CampusDao();		
-				List<Campus> listaCampus = campusDao.getCampus();
+				final CampusDao campusDao = new CampusDao();		
+				final List<Campus> listaCampus = campusDao.getCampus();
 				
-				CursoDao cursoDao = new CursoDao();		
-				List<Curso> listaCurso = cursoDao.getCursos();
+				final CursoDao cursoDao = new CursoDao();		
+				final List<Curso> listaCurso = cursoDao.getCursos();
 				
 				model.addAttribute("listaCampus", listaCampus);
 				model.addAttribute("listaCurso", listaCurso);
 				
 				if(usuarioLogado.getPerfil1().equals("1")) {					
-					AlunoDao alunoDao = new AlunoDao();
-					Aluno aluno = alunoDao.getAlunoId(usuarioLogado.getCpf());					
+					final AlunoDao alunoDao = new AlunoDao();
+					final Aluno aluno = alunoDao.getAlunoId(usuarioLogado.getCpf());
 					session.setAttribute("aluno", aluno);
 					url = "aluno/aluno";					
 				} else if (usuarioLogado.getPerfil2().equals("1")) {
-					PesquisadorDao pesquisadorDao = new PesquisadorDao();
-					Pesquisador pesquisador = pesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
+					final PesquisadorDao pesquisadorDao = new PesquisadorDao();
+					final Pesquisador pesquisador = pesquisadorDao.getPesquisadorId(usuarioLogado.getCpf());
 					session.setAttribute("pesquisador", pesquisador);					
 					url = "pesquisador/pesquisador";					
 				} else {

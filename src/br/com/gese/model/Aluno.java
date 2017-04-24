@@ -1,12 +1,13 @@
 package br.com.gese.model;
 
 import java.time.LocalDate;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -32,7 +33,7 @@ public class Aluno {
 	private char sexo;
 
 	@SerializedName("nascimento")
-	@DateTimeFormat(iso = ISO.DATE)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate nascimento;
 
 	@Size(max = 11)

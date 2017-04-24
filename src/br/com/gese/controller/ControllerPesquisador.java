@@ -28,11 +28,11 @@ public class ControllerPesquisador {
 	@RequestMapping("/cadastroPesquisador")
 	public String CadastroPesquisador(Model model) {		
 		
-		CampusDao campusDao = new CampusDao();		
-		List<Campus> listaCampus = campusDao.getCampus();
+		final CampusDao campusDao = new CampusDao();		
+		final List<Campus> listaCampus = campusDao.getCampus();
 		
-		CursoDao cursoDao = new CursoDao();		
-		List<Curso> listaCurso = cursoDao.getCursos();
+		final CursoDao cursoDao = new CursoDao();		
+		final List<Curso> listaCurso = cursoDao.getCursos();
 		
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
@@ -43,14 +43,14 @@ public class ControllerPesquisador {
 	@RequestMapping("/inserirPesquisador")
 	public String inserirPesquisador(Model model, Pesquisador pesquisador, Usuario usuario) {
 		
-		PesquisadorDao pesquisadorDao = new PesquisadorDao();		
+		final PesquisadorDao pesquisadorDao = new PesquisadorDao();		
 		pesquisadorDao.insertPesquisador(pesquisador);
 		
 		usuario.setPassword(Criptografia.md5(usuario.getPassword()));
 		usuario.setAtivo("1");
 		usuario.setPerfil2("1");
 		
-		UsuarioDao usuarioDao = new UsuarioDao();		
+		final UsuarioDao usuarioDao = new UsuarioDao();		
 		usuarioDao.insertUsuario(usuario);
 		
 		model.addAttribute("mensagem", Mensagem.MsgPesquisadorInseridoSucesso);
@@ -62,16 +62,16 @@ public class ControllerPesquisador {
 	@RequestMapping("/updatePesquisador")
 	public String updatePesquisador(Model model, Pesquisador pesquisador) {			
 						
-		CampusDao campusDao = new CampusDao();		
-		List<Campus> listaCampus = campusDao.getCampus();
+		final CampusDao campusDao = new CampusDao();		
+		final List<Campus> listaCampus = campusDao.getCampus();
 		
-		CursoDao cursoDao = new CursoDao();		
-		List<Curso> listaCurso = cursoDao.getCursos();
+		final CursoDao cursoDao = new CursoDao();		
+		final List<Curso> listaCurso = cursoDao.getCursos();
 		
 		model.addAttribute("listaCampus", listaCampus);
 		model.addAttribute("listaCurso", listaCurso);
 		
-		PesquisadorDao pesquisadorDao = new PesquisadorDao();
+		final PesquisadorDao pesquisadorDao = new PesquisadorDao();
 		pesquisadorDao.updatePesquisador(pesquisador);
 		
 		return "pesquisador/pesquisador";

@@ -72,42 +72,41 @@ public class ServiceDao implements IDao{
 		return listaDeEntidades;
 	}
 
-	@SuppressWarnings("unchecked")
 	public <T> T getEntidadeId(String urlEntidade, String id, Class<T> entidade) {
 
 		T entidadeObjeto = null;
 
 		try {
-			String webPage = urlPrincipal + urlEntidade + getEntidadeID + id;
+			final String webPage = urlPrincipal + urlEntidade + getEntidadeID + id;
 
-			String authString = name + ":" + password;
-			System.out.println("auth string: " + authString);
-			byte[] authEncBytes = Base64.encode(authString.getBytes());
-			String authStringEnc = new String(authEncBytes);
-			System.out.println("Base64 encoded auth string: " + authStringEnc);
+			final String authString = name + ":" + password;
+//			System.out.println("auth string: " + authString);
+			final byte[] authEncBytes = Base64.encode(authString.getBytes());
+			final String authStringEnc = new String(authEncBytes);
+//			System.out.println("Base64 encoded auth string: " + authStringEnc);
 
-			URL url = new URL(webPage);
-			URLConnection urlConnection = url.openConnection();
+			final URL url = new URL(webPage);
+			final URLConnection urlConnection = url.openConnection();
 			urlConnection.setDoOutput(true);
 			urlConnection.setRequestProperty("Authorization", "Basic " + authStringEnc);
-			InputStream is = urlConnection.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
+			final InputStream is = urlConnection.getInputStream();
+			final InputStreamReader isr = new InputStreamReader(is);
 
-			int numCharsRead;
-			char[] charArray = new char[1024];
-			StringBuffer sb = new StringBuffer();
+			Integer numCharsRead;
+			final char[] charArray = new char[1024];
+			final StringBuffer sb = new StringBuffer();
 			while ((numCharsRead = isr.read(charArray)) > 0) {
 				sb.append(charArray, 0, numCharsRead);
 			}
 			
-			String result = sb.toString();
-			System.out.println(result);			
+			final String result = sb.toString();
+//			System.out.println(result);			
 			
-			entidadeObjeto = (T) new JsonConverter().converterJsonParaObjeto(result, (Class<T>)entidadeObjeto); //suppress warning
+			entidadeObjeto = (T) new JsonConverter().converterJsonParaObjeto(result, entidade); //suppress warning
 
-		} catch (MalformedURLException e) {
+		} catch (final MalformedURLException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 

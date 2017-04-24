@@ -13,10 +13,10 @@ import com.google.gson.JsonParseException;
 public class LocalDateDeserializer implements JsonDeserializer<LocalDate> {
 
 	@Override
-	public LocalDate deserialize(JsonElement date, Type type, JsonDeserializationContext context)
+	public LocalDate deserialize(JsonElement jsonDate, Type type, JsonDeserializationContext context)
 			throws JsonParseException {
 		try {			
-			return LocalDate.parse(date.getAsString());
+			return LocalDate.parse(jsonDate.getAsString());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

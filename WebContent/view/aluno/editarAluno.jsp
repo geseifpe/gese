@@ -15,14 +15,14 @@
 			</div>			
 
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="campusId">Informe
+				<label class="col-md-2 control-label" for="campus_id">Informe
 					seu Campus</label>
 				<div class="col-md-4">
-					<select id="campusId" name="campusId" class="form-control">
+					<select id="campus_id" name="campus_id" class="form-control">
 
 						<c:forEach var="campus" items="${listaCampus}" varStatus="id">
 							<option value="${campus.id}"
-								<c:if test="${campus.id == aluno.campusId}">selected="selected"</c:if>>${campus.nome}</option>
+								<c:if test="${campus.id == aluno.campus_id}">selected="selected"</c:if>>${campus.cidade}</option>
 
 						</c:forEach>
 					</select>
@@ -30,14 +30,14 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="cursoId">Informe
+				<label class="col-md-2 control-label" for="curso_id">Informe
 					seu Curso</label>
 				<div class="col-md-4">
-					<select id="cursoId" name="cursoId" class="form-control">
+					<select id="curso_id" name="curso_id" class="form-control">
 
 						<c:forEach var="curso" items="${listaCurso}" varStatus="id">
 							<option value="${curso.id}"
-								<c:if test="${curso.id == aluno.cursoId}">selected="selected"</c:if>>${curso.nome}</option>
+								<c:if test="${curso.id == aluno.curso_id}">selected="selected"</c:if>>${curso.nome}</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -52,13 +52,28 @@
 						value="${aluno.matricula}" />
 				</div>
 			</div>
-
+			
+			<script>
+			$('#nascimento').datepicker({
+				format: "dd-mm-yyyy",					    
+			    autoclose: true,
+				language: "pt-BR"
+			});
+			</script>
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="nascimento">Data
 					de nascimento</label>
 				<div class="col-md-4">
-					<input id="nascimento" name="nascimento" type="date"
-						class="form-control input-md" value="${aluno.nascimento}" />
+				<input id="nascimento" name="nascimento" type="text" value="${aluno.nascimento}"
+					class="form-control input-md" required="required"
+					data-error="Por favor, informe sua data de nascimento"/>
+					<script>
+					$('#nascimento').datepicker({
+						format: "dd-mm-yyyy",					    
+					    autoclose: true,
+						language: "pt-BR"
+					});
+					</script>
 				</div>
 			</div>
 

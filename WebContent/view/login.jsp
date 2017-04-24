@@ -76,7 +76,7 @@
 				</div>
 
 				<div class="col-md-5">
-					<form class="form-horizontal" method="post" action="loginAccess">
+					<form class="form-horizontal" method="post" action="login">
 						<h3 class="text-left text-success">Acesso</h3>
 						<hr />
 						<fieldset>

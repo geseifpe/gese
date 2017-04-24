@@ -79,7 +79,7 @@
 
 						<c:forEach var="campus" items="${listaCampus}" varStatus="id">
 							<option value="${campus.id}" 
-							<c:if test="${pesquisador.campusId == campus.id}">selected="selected"</c:if>>${campus.nome}</option>
+							<c:if test="${pesquisador.campus_id == campus.id}">selected="selected"</c:if>>${campus.cidade}</option>
 
 						</c:forEach>
 					</select>

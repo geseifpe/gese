@@ -17,35 +17,35 @@ import br.com.gese.model.Pesquisador;
 
 public class Upload {		
 	
-	public void uploadSubmissaoProjeto(MultipartFile[] files, HttpSession session) {			
+	public void uploadSubmissaoProjeto(final MultipartFile[] files, HttpSession session) {			
 		
 		final Logger logger = LoggerFactory.getLogger(ControllerPesquisador.class);
 		String message = "";			
-		String cpf = ((Pesquisador) session.getAttribute("pesquisador")).getCpf();
+		final String cpf = ((Pesquisador) session.getAttribute("pesquisador")).getCpf();
 		
 		for (int i = 0; i < files.length; i++) {
-			MultipartFile file = files[i];
-			String name = files[i].getOriginalFilename();
+			final MultipartFile file = files[i];
+			final String name = files[i].getOriginalFilename();
 			
 			try {				
 				
-				byte[] bytes = file.getBytes();
+				final byte[] bytes = file.getBytes();
 				
-				File dir = new File(session.getServletContext().getRealPath("/view/pesquisador/uploads/" + cpf));
+				final File dir = new File(session.getServletContext().getRealPath("/view/pesquisador/uploads/" + cpf));
 				System.out.println("Diretorio existe: " + dir.exists());
 				if (!dir.exists())
 					dir.mkdirs();
  
-				File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
+				final File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
+				final BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 				stream.write(bytes);
 				stream.close();
 
-				logger.info("Server File Location=" + serverFile.getAbsolutePath());
+				logger.info("Localização do serverFile=" + serverFile.getAbsolutePath());
 
-				message = message + "You successfully uploaded file=" + name + "";
+				message = message + "Upload completo do arquivo=" + name + "";
 			} catch (Exception e) {
-				System.out.println("You failed to upload " + name + " => " + e.getMessage());		
+				System.out.println("Falha ao fazer o upload do arquivo " + name + " => " + e.getMessage());		
 			}			
 		}				
 	}

@@ -12,6 +12,8 @@
 <script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
+<script type="text/javascript" src="resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<link type="text/css" rel="stylesheet" href="resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
 
 <script type="text/javascript">
 

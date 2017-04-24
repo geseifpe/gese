@@ -143,7 +143,7 @@
 								<select id="campus_id" name="campus_id" class="form-control">
 
 									<c:forEach var="campus" items="${listaCampus}" varStatus="id">
-										<option value="${campus.id}">${campus.nome}</option>
+										<option value="${campus.id}">${campus.cidade}</option>
 
 									</c:forEach>
 								</select>

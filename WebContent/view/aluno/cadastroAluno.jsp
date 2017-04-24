@@ -17,6 +17,9 @@
 
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
+	
+<script type="text/javascript" src="resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<link type="text/css" rel="stylesheet" href="resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
 
 </head>
 <body data-spy="scroll">
@@ -104,7 +107,7 @@
 								<select id="campus_id" name="campus_id" class="form-control">
 
 									<c:forEach var="campus" items="${listaCampus}" varStatus="id">
-										<option value="${campus.id}">${campus.campus}</option>
+										<option value="${campus.id}">${campus.cidade}</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -131,14 +134,23 @@
 									placeholder="Digite sua matrícula" required="required" />
 							</div>
 						</div>
-
+						
 						<div class="form-group">
 							<label class="col-md-2 control-label" for="nascimento">Data
 								de nascimento</label>
 							<div class="col-md-4">
-								<input id="nascimento" name="nascimento" type="date"
+								<input id="nascimento" name="nascimento" type="text"
 									class="form-control input-md" required="required"
-									data-error="Por favor, informe sua data de nascimento" />
+									data-error="Por favor, informe sua data de nascimento"/>
+									<script>
+									$('#nascimento').datepicker({
+										format: "dd-mm-yyyy",
+									    startView: 2,
+									    maxViewMode: 2,
+									    autoclose: true,
+										language: "pt-BR"
+									});
+									</script>
 								<div class="help-block with-errors"></div>
 							</div>
 						</div>
