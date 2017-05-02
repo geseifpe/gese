@@ -49,27 +49,18 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="section bandeira">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 text-justify">
-					<img src="resources\img\IFPELogo.png"
-						class="img-responsive img-rounded" alt="Logotipo" />
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5">
-				<h3 class="text-left text-success"></h3>
+			<div class="col-md-5">									
+				<div class="col-md-12">
 				<i class="fa fa-2x text-success fa-university"> Portal para
 					Programas de Iniciação Científica, Tecnológica e de Incentivo
 					Acadêmico do IFPE</i>
 					<hr />
-				<a class="btn btn-success btn-lg" href="/gese" style="color: white;">Retornar</a>
+					<a class="btn btn-success btn-lg" href="/gese" style="color: white;">Retornar</a>
+				</div>
 			</div>
+			
 			<div class="col-md-7">
 
 				<form method="post" action="inserirAluno" class="form-horizontal"
@@ -79,7 +70,7 @@
 						<h3 class="text-success">Cadastro de Aluno</h3>
 						<hr />
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="nome">Nome</label>
+							<label class="col-md-3 control-label" for="nome">Nome</label>
 							<div class="col-md-4">
 								<input id="nome" name="nome" type="text"
 									class="form-control input-md" maxlength="50"
@@ -90,7 +81,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="cpf">CPF</label>
+							<label class="col-md-3 control-label" for="cpf">CPF</label>
 							<div class="col-md-4">
 								<input id="cpf" name="cpf" type="text"
 									class="form-control input-md" maxlength="11"
@@ -101,8 +92,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="campus_id">Selecione
-								o seu Campus</label>
+							<label class="col-md-3 control-label" for="campus_id">Campus</label>
 							<div class="col-md-4">
 								<select id="campus_id" name="campus_id" class="form-control">
 
@@ -114,8 +104,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="curso_id">Selecione
-								o seu Curso</label>
+							<label class="col-md-3 control-label" for="curso_id">Curso</label>
 							<div class="col-md-4">
 								<select id="curso_id" name="curso_id" class="form-control">
 
@@ -127,7 +116,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="matricula">Matricula</label>
+							<label class="col-md-3 control-label" for="matricula">Matricula</label>
 							<div class="col-md-4">
 								<input id="matricula" name="matricula" type="text"
 									class="form-control input-md" maxlength="20"
@@ -136,12 +125,12 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="nascimento">Data
-								de nascimento</label>
+							<label class="col-md-3 control-label" for="nascimento">Data
+								de Nascimento</label>
 							<div class="col-md-4">
 								<input id="nascimento" name="nascimento" type="text"
 									class="form-control input-md" required="required"
-									data-error="Por favor, informe sua data de nascimento"/>
+									data-error="Por favor, informe sua data de nascimento" />
 									<script>
 									$('#nascimento').datepicker({
 										format: "dd-mm-yyyy",
@@ -156,7 +145,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="sexo">Sexo</label>
+							<label class="col-md-3 control-label" for="sexo">Sexo</label>
 							<div class="col-md-4">
 								<select id="sexo" name="sexo" class="form-control">
 									<option value="M">Masculino</option>
@@ -167,7 +156,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="telefone">Telefone</label>
+							<label class="col-md-3 control-label" for="telefone">Telefone</label>
 							<div class="col-md-4">
 								<input id="telefone" name="telefone" type="text"
 									class="form-control input-md" placeholder="Apenas números"
@@ -177,7 +166,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="celular">Celular</label>
+							<label class="col-md-3 control-label" for="celular">Celular</label>
 							<div class="col-md-4">
 								<input id="celular" name="celular" type="text"
 									class="form-control input-md" placeholder="Apenas números"
@@ -187,7 +176,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="linklattes">lattes</label>
+							<label class="col-md-3 control-label" for="linklattes">lattes</label>
 							<div class="col-md-4">
 								<input id="linklattes" name="linklattes" type="text"
 									class="form-control input-md" placeholder="Digite seu Lattes"
@@ -198,7 +187,7 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="email">E-mail</label>
+							<label class="col-md-3 control-label" for="email">E-mail</label>
 							<div class="col-md-4">
 								<input id="email" name="email" type="email"
 									class="form-control input-md" placeholder="Digite seu e-mail"
@@ -212,12 +201,12 @@
 									class="form-control input-md" required="required"
 									maxlength="45" data-match="#email"
 									data-match-error="Atenção! Os e-mails não são iguais." />
-								<div class="help-block with-errors"></div>
+								<div class="with-errors"></div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="password">Senha</label>
+							<label class="col-md-3 control-label" for="password">Senha</label>
 							<div class="col-md-4">
 								<input id="password" name="password" data-minlenght="6"
 									type="password" class="form-control input-md"
@@ -233,9 +222,8 @@
 							</div>
 						</div>
 
-						<!-- Button -->
 						<div class="form-group">
-							<label class="col-md-2 control-label" for="submit">Se já
+							<label class="col-md-3 control-label" for="submit">Se já
 								concluiu clique aqui:</label>
 							<div class="col-md-8">
 								<input type="submit" id="submit" name="submit"

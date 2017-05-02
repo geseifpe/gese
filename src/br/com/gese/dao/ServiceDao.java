@@ -55,7 +55,7 @@ public class ServiceDao implements IDao{
 			InputStreamReader isr = new InputStreamReader(is);
 
 			int numCharsRead;
-			char[] charArray = new char[1024];
+			final char[] charArray = new char[1024];
 			StringBuffer sb = new StringBuffer();
 			while ((numCharsRead = isr.read(charArray)) > 0) {
 				sb.append(charArray, 0, numCharsRead);

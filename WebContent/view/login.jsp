@@ -43,25 +43,14 @@
 		</div>
 	</div>
 
-	<div class="section bandeira">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 text-justify">
-					<img src="resources\img\IFPELogo.png"
-						class="img-responsive img-rounded" alt="Logotipo" />
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-5">
-					<h3 class="text-left text-success"></h3>
+				<div class="col-md-5">									
+					<div class="col-md-8">
 					<i class="fa fa-2x text-success fa-university"> Portal para
 						Programas de Iniciação Científica, Tecnológica e de Incentivo
 						Acadêmico do IFPE</i>
-						<div class="col-md-3">
 						<div class="dropdown" style="margin-top: 30px;">
 							<button class="btn btn-success btn-lg dropdown-toggle"
 								data-toggle="dropdown">
@@ -75,7 +64,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-5">
+				<div class="col-md-4">
 					<form class="form-horizontal" method="post" action="login">
 						<h3 class="text-left text-success">Acesso</h3>
 						<hr />
@@ -114,7 +103,8 @@
 				</div>				
 			</div>			
 		</div>		
-	</div>	
+	</div>
+	
 	<div class="section">
 		<div class="container">
 			<div class="row">

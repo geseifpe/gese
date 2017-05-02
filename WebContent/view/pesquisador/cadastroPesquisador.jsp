@@ -45,26 +45,17 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="section bandeira">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 text-justify">
-					<img src="resources\img\IFPELogo.png"
-						class="img-responsive img-rounded" alt="Logotipo" />
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5">
-				<h3 class="text-left text-success"></h3>
+			<div class="col-md-5">									
+				<div class="col-md-12">
 				<i class="fa fa-2x text-success fa-university"> Portal para
 					Programas de Iniciação Científica, Tecnológica e de Incentivo
 					Acadêmico do IFPE</i>
-				<hr />
-				<a class="btn btn-primary btn-lg" href="/gese" style="color: white;">Retornar</a>
+					<hr />
+					<a class="btn btn-success btn-lg" href="/gese" style="color: white;">Retornar</a>
+				</div>
 			</div>
 			<div class="col-md-7">
 				<form class="form-horizontal" action="inserirPesquisador"
@@ -209,7 +200,7 @@
 									placeholder="Confirme seu e-mail" required="required"
 									maxlength="45" data-match="#email1"
 									data-match-error="Atenção! Os e-mails não são iguais." />
-								<div class="help-block with-errors"></div>
+								<div class="with-errors"></div>
 							</div>
 						</div>
 
@@ -229,7 +220,7 @@
 									placeholder="Digite seu e-mail" maxlength="45"
 									data-match="#email2"
 									data-match-error="Atenção! Os e-mails não são iguais." />
-								<div class="help-block with-errors"></div>
+								<div class="with-errors"></div>
 							</div>
 						</div>
 

@@ -12,11 +12,12 @@
 <script src="resources/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script src="resources/bootstrap/js/bootstrap.min.js"
 	type="text/javascript"></script>
-<script type="text/javascript" src="resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<link type="text/css" rel="stylesheet" href="resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
+<script type="text/javascript"
+	src="resources/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<link type="text/css" rel="stylesheet"
+	href="resources/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
 
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		$("#perfil").show();
 		$("#editar").hide();
@@ -72,7 +73,7 @@
 			<div class="row">
 				<div class="col-md-3 text-justify">
 					<img src="resources\img\IFPELogo.png"
-						class="img-responsive img-rounded" alt="Logotipo">
+						class="img-responsive img-rounded" alt="Logotipo" />
 				</div>
 			</div>
 		</div>
@@ -84,18 +85,23 @@
 				<div class="col-md-3 text-left">
 					<!-- Menu Principal -->
 
-					<input class="btn btn-default mesmo-tamanho" type="submit"
-						name="opcao" value="Perfil" onclick="exibirinclude('perfil')" />
-					<input class="btn btn-default mesmo-tamanho" type="button"
-						name="opcao" onclick="exibirinclude('editar')" value="Editar" />
-					<input class="btn btn-default mesmo-tamanho" type="button"
-						name="opcao" value="Mensagens" onclick="exibirinclude('mensagem')" />
-					<input class="btn btn-default mesmo-tamanho" type="submit"
-						name="opcao" value="Relatório Mensal"
-						onclick="exibirinclude('frequencia')" /> <a href="logout"> <input
-						class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
-						value="Sair" /></a>
-
+					<ul style="list-style-type: none">
+						<li><input class="btn btn-default mesmo-tamanho"
+							type="submit" name="opcao" value="Perfil"
+							onclick="exibirinclude('perfil')" /></li>
+						<li><input class="btn btn-default mesmo-tamanho"
+							type="button" name="opcao" onclick="exibirinclude('editar')"
+							value="Editar" /></li>
+						<li><input class="btn btn-default mesmo-tamanho"
+							type="button" name="opcao" value="Mensagens"
+							onclick="exibirinclude('mensagem')" /></li>
+						<li><input class="btn btn-default mesmo-tamanho"
+							type="submit" name="opcao" value="Relatório Mensal"
+							onclick="exibirinclude('frequencia')" /></li>
+						<li><a href="logout"> <input
+								class="btn btn-default mesmo-tamanho" type="submit" name="opcao"
+								value="Sair" /></a></li>
+					</ul>
 				</div>
 
 				<div id="perfil">
